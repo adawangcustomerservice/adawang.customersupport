@@ -213,39 +213,124 @@
             color: #718096;
         }
 
-        /* Seksyen Keselamatan Di Bawah Sekali */
-        .security-badge-section {
-            background: #f7fafc;
-            border-top: 1px solid #e2e8f0;
-            padding: 20px 15px;
-            margin-top: 40px;
-            text-align: center;
-            border-radius: 8px;
+        /* Struktur Footer Rasmi Baharu */
+        .main-footer {
+            background: #1a202c;
+            color: #cbd5e1;
+            padding: 40px 20px 20px 20px;
+            margin-top: 50px;
+            border-radius: 16px 16px 0 0;
+            font-size: 0.9rem;
         }
-        .security-title {
-            color: #2d3748;
+        .footer-brand {
+            margin-bottom: 30px;
+        }
+        .footer-logo {
+            background: white;
+            padding: 8px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 15px;
+            max-width: 180px;
+        }
+        .footer-logo img {
+            width: 100%;
+            display: block;
+        }
+        .footer-brand h3 {
+            color: white;
+            margin: 0 0 5px 0;
+            font-size: 1.4rem;
+        }
+        .footer-tagline {
+            color: #3182ce;
             font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            border-top: 1px solid #2d3748;
+            padding-top: 25px;
+            margin-bottom: 30px;
+        }
+        @media(min-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .footer-col h4 {
+            color: white;
+            margin: 0 0 15px 0;
+            font-size: 1.1rem;
+            border-left: 3px solid #3182ce;
+            padding-left: 8px;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: white;
+        }
+        .footer-info-block {
+            margin-bottom: 15px;
+        }
+        .footer-info-block strong {
+            color: white;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .footer-bottom-badges {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            background: #2d3748;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        @media(min-width: 480px) {
+            .footer-bottom-badges {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .f-badge {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 6px;
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-        .security-tags {
-            display: flex;
-            justify-content: center;
             gap: 10px;
-            margin-top: 12px;
+            background: #1a202c;
+            padding: 10px;
+            border-radius: 6px;
         }
-        .badge-tag {
-            background: #e6fffa;
-            color: #234e52;
-            padding: 4px 10px;
-            border-radius: 4px;
+        .f-badge-icon {
+            font-size: 1.3rem;
+        }
+        .f-badge-text strong {
+            color: white;
+            display: block;
+            font-size: 0.85rem;
+        }
+        .f-badge-text span {
+            font-size: 0.75rem;
+            color: #a0aec0;
+        }
+        .footer-copyright {
+            text-align: center;
+            color: #718096;
             font-size: 0.8rem;
-            font-weight: bold;
-            border: 1px solid #b2f5ea;
+            border-top: 1px solid #2d3748;
+            padding-top: 20px;
         }
 
         /* Gaya Pop-up Khas Sesi Tamat */
@@ -304,7 +389,6 @@
 </head>
 <body>
 
-    <!-- POP-UP AMARAN KESELAMATAN (Kekal Asal) -->
     <div class="popup-overlay" id="fraudPopup">
         <div class="popup-box">
             <div class="popup-icon">🚨</div>
@@ -320,7 +404,6 @@
         </div>
     </div>
 
-    <!-- POP-UP KHAS: AMARAN SESI TAMAT (Mengikut Request Link Anda) -->
     <div class="session-popup-overlay" id="sessionPopup">
         <div class="session-popup-box">
             <div class="session-icon">⚠️</div>
@@ -332,30 +415,11 @@
 
     <div class="container">
         
-        <!-- HEADER UTAMA & LOGO -->
         <div class="header">
-            <div class="logo-placeholder"><img src="IMG_6239.jpeg" alt="Logo Syarikat" width="150"></div>
+            <div class="logo-placeholder"><img src="images/IMG_6239.jpeg" alt="Logo Syarikat" width="150" onerror="this.src='IMG_6239.jpeg'"></div>
             <p class="subtitle">Portal Rasmi Pembayaran Balik Pinjaman</p>
         </div>
 
-        <!-- HERO SECTION TAMBAHAN: SEBIJI MACAM WEBSITE UTAMA -->
-        <div class="hero-section">
-            <div class="hero-badges">
-                <span>⚡ Pantas</span>
-                <span>•</span>
-                <span>🔒 Selamat</span>
-                <span>•</span>
-                <span>💎 Telus</span>
-            </div>
-            <h1 class="hero-title">
-                Dapatkan Sehingga <span>RM 5,000</span> Hari Yang Sama Pinjaman ke Akaun Bank Anda
-            </h1>
-            <p class="hero-desc">
-                Kelulusan pantas dalam masa 5 minit sahaja. Tiada yuran tersembunyi, tiada kertas kerja yang rumit. Dapatkan wang tunai yang anda perlukan hari ini dengan pemberi pinjaman dalam talian yang paling dipercayai di Malaysia.
-            </h1>
-        </div>
-
-        <!-- 1. MAKLUMAT BAYARAN (DUDUK PALING ATAS DALAM FORM-WRAPPER) -->
         <div class="form-wrapper">
             
             <div class="progress-container">
@@ -366,7 +430,6 @@
                 <div class="progress-item" id="p4"><div class="p-num">✓</div><div class="p-txt">Selesai</div></div>
             </div>
 
-            <!-- LANGKAH 1: BORANG MAKLUMAT BAYARAN BALIK -->
             <div class="form-step active" id="step1">
                 <h3>📋 Langkah 1: Maklumat Pelanggan</h3>
                 <div class="form-group">
@@ -388,7 +451,6 @@
                 <button class="btn btn-next" onclick="goToStep2()">Seterusnya (Bayaran) →</button>
             </div>
 
-            <!-- LANGKAH 2: IMBAZ QR -->
             <div class="form-step" id="step2">
                 <h3>💵 Langkah 2: Imbas QR DuitNow</h3>
                 <p class="step-info">Sila imbas QR Code di bawah menggunakan aplikasi Bank atau e-Wallet anda untuk jumlah <b>RM <span id="displayAmount">0.00</span></b>.</p>
@@ -408,7 +470,6 @@
                 </div>
             </div>
 
-            <!-- LANGKAH 3: RESIT -->
             <div class="form-step" id="step3">
                 <h3>📎 Langkah 3: Muat Naik Resit</h3>
                 <p class="step-info">Sila muat naik bukti pembayaran (PDF atau Gambar) bagi pengesahan akaun anda.</p>
@@ -426,7 +487,6 @@
                 </div>
             </div>
 
-            <!-- LANGKAH 4: BERJAYA -->
             <div class="form-step" id="step4">
                 <div class="success-screen">
                     <div class="success-icon">🎉</div>
@@ -439,7 +499,22 @@
 
         </div>
 
-        <!-- 2. KALKULATOR PINJAMAN (DUDUK TENGAH - DI LUAR KOTAK BAYARAN) -->
+        <div class="hero-section" style="margin-top: 40px;">
+            <div class="hero-badges">
+                <span>⚡ Pantas</span>
+                <span>•</span>
+                <span>🔒 Selamat</span>
+                <span>•</span>
+                <span>💎 Telus</span>
+            </div>
+            <h1 class="hero-title">
+                Dapatkan Sehingga <span>RM 5,000</span> Hari Yang Sama Pinjaman ke Akaun Bank Anda
+            </h1>
+            <p class="hero-desc">
+                Kelulusan pantas dalam masa 5 minit sahaja. Tiada yuran tersembunyi, tiada kertas kerja yang rumit. Dapatkan wang tunai yang anda perlukan hari ini dengan pemberi pinjaman dalam talian yang paling dipercayai di Malaysia.
+            </p>
+        </div>
+
         <div class="calculator-card">
             <div class="calculator-title">📊 Kalkulator & Permohonan Pinjaman Baru</div>
             <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Pilih Jumlah Pinjaman (RM):</label>
@@ -460,14 +535,12 @@
             <button type="button" class="btn btn-next" onclick="redirectToRegister()" style="background-color: #3182ce; width: 100%; padding: 12px; font-weight: bold; border-radius: 6px;">🚀 Mohon Sekarang</button>
         </div>
 
-        <!-- ELEMEN SEBIJI WEBSITE ASAL: PROSES MUDAH 3 LANGKAH -->
         <div class="section-title">
             <span>Proses Mudah</span>
             <h2>Cara Memohon Pinjaman Anda</h2>
         </div>
         <p class="section-subtitle">Dapatkan pinjaman anda diluluskan dalam 3 langkah mudah sahaja. Proses yang diperkemas kami memastikan anda mendapat dana yang diperlukan dengan cepat dan cekap.</p>
 
-        <!-- LANGKAH 1 -->
         <div class="step-card">
             <div class="step-number">01</div>
             <div class="step-tag">LANGKAH 1</div>
@@ -480,7 +553,6 @@
             </ul>
         </div>
 
-        <!-- LANGKAH 2 -->
         <div class="step-card">
             <div class="step-number">02</div>
             <div class="step-tag">LANGKAH 2</div>
@@ -498,7 +570,6 @@
             </div>
         </div>
 
-        <!-- LANGKAH 3 -->
         <div class="step-card">
             <div class="step-number">03</div>
             <div class="step-tag">LANGKAH 3</div>
@@ -511,7 +582,6 @@
             </ul>
         </div>
 
-        <!-- MENGAPA PILIH ADAWANG -->
         <div class="section-title">
             <span>Mengapa Pilih AdaWang?</span>
             <h2>Alami Masa Depan Pinjaman Dalam Talian</h2>
@@ -537,7 +607,6 @@
             <p>Bantuan ejen sokongan sedia tersedia pada bila-bila masa sahaja anda memerlukan.</p>
         </div>
 
-        <!-- LINKS SOSIAL -->
         <div class="social-channels">
             <h4>Hubungi Saluran Rasmi Kami:</h4>
             <div class="links-grid">
@@ -547,19 +616,102 @@
             </div>
         </div>
 
-        <!-- 3. TULISAN GRED BANK (DUDUK PALING BAWAH SEKALI SEBELUM AKHIR) -->
-        <div class="security-badge-section">
-            <div class="security-title">🛡️ Keselamatan Gred Bank</div>
-            <p style="margin: 0; font-size: 0.88rem; color: #4a5568; line-height: 1.5;">
-                Data anda dilindungi dengan 256-bit SSL encryption dan protokol keselamatan canggih yang dipercayai oleh institusi kewangan utama.
-            </p>
-            <div class="security-tags">
-                <span class="badge-tag">🔒 SSL Selamat</span>
-                <span class="badge-tag">🛡️ Data Dilindungi</span>
+    </div><footer class="main-footer">
+        <div class="footer-container" style="max-width: 800px; margin: 0 auto;">
+            
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="image_cd6ae3.png" alt="AdaWang Logo">
+                </div>
+                <h3>AdaWang</h3>
+                <p class="footer-tagline">Rakan Kewangan Anda Yang Dipercayai</p>
+                <p style="font-size: 0.85rem; color: #a0aec0; line-height: 1.5; margin-top: 5px;">
+                    Platform pinjaman dalam talian terkemuka Malaysia yang menyediakan perkhidmatan pinjaman yang pantas, selamat, dan telus. Dapatkan kelulusan dalam minit dengan sistem bertenaga AI kami.
+                </p>
             </div>
-        </div>
 
-    </div>
+            <div class="footer-grid">
+                
+                <div class="footer-col">
+                    <h4>Pautan Pantas</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="document.getElementById('calcPhone').scrollIntoView({behavior: 'smooth'}); return false;">Mohon Sekarang</a></li>
+                        <li><a href="#">Pakej Kami</a></li>
+                        <li><a href="#" onclick="document.getElementById('calcPhone').scrollIntoView({behavior: 'smooth'}); return false;">Kalkulator Pinjaman</a></li>
+                        <li><a href="#">Soalan Lazim</a></li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 20px;">Undang-undang</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Terma & Syarat</a></li>
+                        <li><a href="#">Dasar Privasi</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Hubungan & Sokongan</h4>
+                    <div class="footer-info-block">
+                        <strong>Sokongan E-mel:</strong>
+                        <a href="mailto:support@adawang.my" style="color: #a0aec0; text-decoration: none;">support@adawang.my</a>
+                    </div>
+                    <div class="footer-info-block">
+                        <strong>Sembang Langsung:</strong>
+                        <span>Tersedia 24/7</span>
+                    </div>
+                    <div class="footer-info-block">
+                        <strong>Alamat:</strong>
+                        <span>Kuala Lumpur, Malaysia</span>
+                    </div>
+                    <div class="footer-info-block">
+                        <strong>Waktu Beroperasi:</strong>
+                        <span>Isnin - Jumaat: 9:00 PG - 6:00 PTG</span><br>
+                        <span>Hujung Minggu: Sokongan Dalam Talian Sahaja</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom-badges">
+                <div class="f-badge">
+                    <span class="f-badge-icon">🔒</span>
+                    <div class="f-badge-text">
+                        <strong>Keselamatan Gred Bank</strong>
+                        <span>Penyulitan SSL 256-bit</span>
+                    </div>
+                </div>
+                <div class="f-badge">
+                    <span class="f-badge-icon">🏛️</span>
+                    <div class="f-badge-text">
+                        <strong>Pemberi Pinjam Berlesen</strong>
+                        <span>Dikawal selia oleh Bank Negara</span>
+                    </div>
+                </div>
+                <div class="f-badge">
+                    <span class="f-badge-icon">🛠️</span>
+                    <div class="f-badge-text">
+                        <strong>Sokongan 24/7</strong>
+                        <span>Sentiasa ada untuk membantu</span>
+                    </div>
+                </div>
+                <div class="f-badge">
+                    <span class="f-badge-icon">👥</span>
+                    <div class="f-badge-text">
+                        <strong>50,000+ Pelanggan</strong>
+                        <span>Dipercayai oleh Rakyat Malaysia</span>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-size: 0.75rem; color: #718096; text-align: center; margin-bottom: 15px; line-height: 1.4;">
+                🔒 Berlesen oleh Bank Negara Malaysia | Penyulitan SSL 256-bit | Ikuti Kami
+            </p>
+
+            <div class="footer-copyright">
+                <p>&copy; 2026 AdaWang. Hak Cipta Terpelihara.</p>
+            </div>
+
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 
@@ -574,7 +726,7 @@
             selectedLoanAmount = amount;
         }
 
-        // Fungsi butang mohon (Redirect ke laman login/register)
+        // Fungsi butang mohon
         function redirectToRegister() {
             const phone = document.getElementById('calcPhone').value.trim();
             if (selectedLoanAmount === 0) {
@@ -594,7 +746,6 @@
         }
     </script>
 
-    <!-- Integrasi Live Chat Crisp -->
     <script type="text/javascript">
         window.$crisp=[];window.CRISP_WEBSITE_ID="b2ba94c5-4673-479a-a2a7-7b6c8ed5357a";
         (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
