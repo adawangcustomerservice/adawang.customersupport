@@ -1,3 +1,10 @@
+Faham, saya minta maaf atas susunan sebelum ini. Rupa-rupanya masalah itu berlaku disebabkan kod bahagian bawah diletakkan di luar tag penutup `<div class="container">`, yang boleh menyebabkan paparan lari ke tepi pada sesetengah reka bentuk CSS anda.
+
+Saya telah memasukkan kod **Hubungan & Sokongan** serta teks **Hak Cipta** tersebut dengan selamat di bahagian dalam kontainer utama (sebelum penutup `</div>`), supaya ia kekal tersusun rapi di bahagian **bawah sekali** dan tidak terkeluar ke tepi.
+
+Sila gantikan keseluruhan kod `index.html` anda dengan kod baharu yang lengkap ini:
+
+```html
 <!DOCTYPE html>
 <html lang="ms">
 <head>
@@ -73,53 +80,62 @@
             border: 1px solid #b2f5ea;
         }
 
-        /* Gaya Khusus untuk Seksyen Maklumat Hubungan & Hak Cipta di Paling Bawah */
-        .footer-simple {
-            background: #1a202c;
-            color: #cbd5e1;
-            padding: 30px 20px;
-            margin-top: 40px;
-            border-radius: 12px 12px 0 0;
-            font-size: 0.9rem;
+        /* Gaya Khusus untuk Info Hubungan & Hak Cipta di Bawah */
+        .site-footer-info {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
         }
-        .footer-simple-content {
-            max-width: 600px;
-            margin: 0 auto;
+        .footer-support-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #1a202c;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 5px;
         }
-        .footer-support-section h4 {
-            color: #fff;
-            margin: 0 0 15px 0;
-            font-size: 1.1rem;
-            border-left: 3px solid #3182ce;
-            padding-left: 8px;
-        }
-        .support-grid {
+        .footer-support-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         @media (min-width: 480px) {
-            .support-grid {
+            .footer-support-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
-        .support-item strong {
-            color: #fff;
+        .support-block strong {
             display: block;
+            color: #4a5568;
+            font-size: 0.9rem;
             margin-bottom: 2px;
         }
-        .support-item span {
-            color: #a0aec0;
-            font-size: 0.85rem;
-        }
-        .footer-copyright-section {
-            border-top: 1px solid #2d3748;
-            padding-top: 20px;
-            text-align: center;
-            font-size: 0.8rem;
+        .support-block span {
             color: #718096;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            display: block;
+        }
+        .footer-copyright-block {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+            text-align: center;
             line-height: 1.5;
+        }
+        .footer-copyright-block p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #4a5568;
+            font-weight: bold;
+        }
+        .footer-copyright-block small {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.75rem;
+            color: #a0aec0;
         }
     </style>
 </head>
@@ -264,42 +280,36 @@
                 <a href="https://www.adawang.asia/" target="_blank" class="chan-link website">🌐 Laman Web Utama</a>
             </div>
         </div>
-    </div>
 
-    <footer class="footer-simple">
-        <div class="footer-simple-content">
-            
-            <div class="footer-support-section">
-                <h4>Hubungan & Sokongan</h4>
-                <div class="support-grid">
-                    <div class="support-item">
-                        <strong>Sokongan E-mel</strong>
-                        <span>support@adawang.my</span>
-                    </div>
-                    <div class="support-item">
-                        <strong>Sembang Langsung</strong>
-                        <span>Tersedia 24/7</span>
-                    </div>
-                    <div class="support-item">
-                        <strong>Alamat</strong>
-                        <span>Kuala Lumpur, Malaysia</span>
-                    </div>
-                    <div class="support-item">
-                        <strong>Waktu Beroperasi</strong>
-                        <span>Isnin - Jumaat: 9:00 PG - 6:00 PTG<br>Hujung Minggu: Sokongan Dalam Talian Sahaja</span>
-                    </div>
+        <div class="site-footer-info">
+            <div class="footer-support-title">Hubungan & Sokongan</div>
+            <div class="footer-support-grid">
+                <div class="support-block">
+                    <strong>Sokongan E-mel</strong>
+                    <span>support@adawang.my</span>
+                </div>
+                <div class="support-block">
+                    <strong>Sembang Langsung</strong>
+                    <span>Tersedia 24/7</span>
+                </div>
+                <div class="support-block">
+                    <strong>Alamat</strong>
+                    <span>Kuala Lumpur, Malaysia</span>
+                </div>
+                <div class="support-block">
+                    <strong>Waktu Beroperasi</strong>
+                    <span>Isnin - Jumaat: 9:00 PG - 6:00 PTG</span>
+                    <span>Hujung Minggu: Sokongan Dalam Talian Sahaja</span>
                 </div>
             </div>
-
-            <div class="footer-copyright-section">
+            
+            <div class="footer-copyright-block">
                 <p>© 2025 AdaWang. Hak cipta terpelihara.</p>
-                <p style="margin-top: 5px; font-size: 0.75rem; color: #4a5568;">AdaWang adalah tanda dagangan berdaftar. Berlesen oleh Bank Negara Malaysia di bawah Akta Perniagaan Perkhidmatan Wang 2011</p>
+                <small>AdaWang adalah tanda dagangan berdaftar. Berlesen oleh Bank Negara Malaysia di bawah Akta Perniagaan Perkhidmatan Wang 2011</small>
             </div>
-
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+    </div> <script src="script.js"></script>
 
     <script>
         let selectedLoanAmount = 0;
@@ -335,3 +345,5 @@
 
 </body>
 </html>
+
+```
