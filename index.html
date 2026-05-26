@@ -5,6 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Pembayaran Adawang</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Gaya Tambahan untuk Kalkulator dan Elemen Keselamatan */
+        .calculator-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .calculator-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .amount-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .btn-amount {
+            background: #f7fafc;
+            border: 1px solid #cbd5e1;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #4a5568;
+        }
+        .btn-amount.selected {
+            background: #3182ce;
+            color: white;
+            border-color: #3182ce;
+        }
+        .security-badge-section {
+            background: #f7fafc;
+            border-left: 4px solid #38a169;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .security-title {
+            color: #276749;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+        .security-tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .badge-tag {
+            background: #e6fffa;
+            color: #234e52;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border: 1px solid #b2f5ea;
+        }
+    </style>
 </head>
 <body>
 
@@ -37,6 +105,39 @@
                 <div class="progress-item" id="p2"><div class="p-num">2</div><div class="p-txt">Bayaran QR</div></div>
                 <div class="progress-item" id="p3"><div class="p-num">3</div><div class="p-txt">Upload Resit</div></div>
                 <div class="progress-item" id="p4"><div class="p-num">✓</div><div class="p-txt">Selesai</div></div>
+            </div>
+
+            <!-- BAHAGIAN KALKULATOR PINJAMAN DI ATAS LANGKAH BORANG -->
+            <div class="calculator-card">
+                <div class="calculator-title">📊 Kalkulator & Permohonan Pinjaman Baru</div>
+                <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Pilih Jumlah Pinjaman (RM):</label>
+                <div class="amount-buttons">
+                    <button type="button" class="btn-amount" onclick="selectAmount(300)">300</button>
+                    <button type="button" class="btn-amount" onclick="selectAmount(500)">500</button>
+                    <button type="button" class="btn-amount" onclick="selectAmount(1000)">1000</button>
+                    <button type="button" class="btn-amount" onclick="selectAmount(2000)">2000</button>
+                    <button type="button" class="btn-amount" onclick="selectAmount(3000)">3000</button>
+                    <button type="button" class="btn-amount" onclick="selectAmount(5000)">5000</button>
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Nombor Telefon Bimbit:</label>
+                    <input type="tel" id="calcPhone" placeholder="Cth: 0123456789" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;">
+                </div>
+                
+                <button type="button" class="btn btn-next" onclick="redirectToRegister()" style="background-color: #2b6cb0; width: 100%; padding: 12px; font-weight: bold;">🚀 Mohon Sekarang</button>
+            </div>
+
+            <!-- TEKS KESELAMATAN GRED BANK -->
+            <div class="security-badge-section">
+                <div class="security-title">🛡️ Keselamatan Gred Bank</div>
+                <p style="margin: 0; font-size: 0.88rem; color: #4a5568; line-height: 1.4;">
+                    Data anda dilindungi dengan 256-bit SSL encryption dan protokol keselamatan canggih yang dipercayai oleh institusi kewangan utama.
+                </p>
+                <div class="security-tags">
+                    <span class="badge-tag">🔒 SSL Selamat</span>
+                    <span class="badge-tag">🛡️ Data Dilindungi</span>
+                </div>
             </div>
 
             <div class="form-step active" id="step1">
@@ -118,10 +219,40 @@
         </div>
     </div>
 
-    <!-- Fail JavaScript asal untuk fungsi borang/popup portal -->
     <script src="script.js"></script>
 
-    <!-- Integrasi Live Chat Crisp (ID: b2ba94c5-4673-479a-a2a7-7b6c8ed5357a) -->
+    <!-- FUNGSI JAVASCRIPT BARU UNTUK KALKULATOR & REDIRECT -->
+    <script>
+        let selectedLoanAmount = 0;
+
+        function selectAmount(amount) {
+            // Buang kelas 'selected' daripada semua butang pinjaman
+            const buttons = document.querySelectorAll('.btn-amount');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            
+            // Tambah kelas 'selected' pada butang yang diklik
+            event.target.classList.add('selected');
+            selectedLoanAmount = amount;
+        }
+
+        function redirectToRegister() {
+            const phone = document.getElementById('calcPhone').value.trim();
+            
+            if (selectedLoanAmount === 0) {
+                alert('Sila pilih jumlah pinjaman terlebih dahulu.');
+                return;
+            }
+            if (phone === '') {
+                alert('Sila masukkan nombor telefon anda.');
+                return;
+            }
+            
+            // Bawa customer terus ke website adawang.asia anda
+            window.location.href = "https://www.adawang.asia/";
+        }
+    </script>
+
+    <!-- Integrasi Live Chat Crisp -->
     <script type="text/javascript">
         window.$crisp=[];window.CRISP_WEBSITE_ID="b2ba94c5-4673-479a-a2a7-7b6c8ed5357a";
         (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
