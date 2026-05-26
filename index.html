@@ -6,7 +6,157 @@
     <title>Portal Pembayaran Adawang</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Gaya Tambahan untuk Kalkulator dan Elemen Keselamatan */
+        /* Gaya Rekabentuk Mengikut Laman Web Utama AdaWang */
+        .hero-section {
+            text-align: center;
+            padding: 20px 10px;
+            background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%);
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-weight: bold;
+            color: #2b6cb0;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        .hero-badges span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .hero-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1a202c;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+        .hero-title span {
+            color: #3182ce;
+            display: block;
+            font-size: 2rem;
+        }
+        .hero-desc {
+            font-size: 0.95rem;
+            color: #4a5568;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Seksyen Langkah-Langkah (01, 02, 03) */
+        .section-title {
+            text-align: center;
+            margin: 40px 0 10px 0;
+        }
+        .section-title span {
+            color: #3182ce;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .section-title h2 {
+            font-size: 1.5rem;
+            color: #1a202c;
+            margin-top: 5px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+        .step-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ebf8ff;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            z-index: 1;
+        }
+        .step-tag {
+            color: #3182ce;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+        .step-card h4 {
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin: 5px 0 12px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .step-card p {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .step-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .step-features li {
+            font-size: 0.85rem;
+            color: #2d3748;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .step-features li::before {
+            content: "✓";
+            color: #38a169;
+            font-weight: bold;
+        }
+
+        /* Bahagian Grid Statistik AI */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .stat-box {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #edf2f7;
+        }
+        .stat-val {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #2b6cb0;
+        }
+        .stat-lbl {
+            font-size: 0.75rem;
+            color: #718096;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* Rekabentuk Kalkulator Di Tengah */
         .calculator-card {
             background: #ffffff;
             border-radius: 12px;
@@ -16,7 +166,7 @@
             border: 1px solid #e2e8f0;
         }
         .calculator-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: #2d3748;
             margin-bottom: 15px;
@@ -43,39 +193,118 @@
             color: white;
             border-color: #3182ce;
         }
+
+        /* Ciri Tambahan Mengapa Pilih AdaWang */
+        .feature-mini {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+        .feature-mini h5 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+            color: #2d3748;
+        }
+        .feature-mini p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        /* Seksyen Keselamatan Di Bawah Sekali */
         .security-badge-section {
             background: #f7fafc;
-            border-left: 4px solid #38a169;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
+            border-top: 1px solid #e2e8f0;
+            padding: 20px 15px;
+            margin-top: 40px;
+            text-align: center;
+            border-radius: 8px;
         }
         .security-title {
-            color: #276749;
+            color: #2d3748;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 5px;
-            margin-bottom: 5px;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 8px;
+            font-size: 1rem;
         }
         .security-tags {
             display: flex;
+            justify-content: center;
             gap: 10px;
-            margin-top: 8px;
+            margin-top: 12px;
         }
         .badge-tag {
             background: #e6fffa;
             color: #234e52;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 4px;
             font-size: 0.8rem;
             font-weight: bold;
             border: 1px solid #b2f5ea;
         }
+
+        /* Gaya Pop-up Khas Sesi Tamat */
+        .session-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .session-popup-box {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: popupScale 0.3s ease-out;
+        }
+        @keyframes popupScale {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .session-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .session-popup-box h3 {
+            color: #e53e3e;
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+        }
+        .session-popup-box p {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .btn-session-close {
+            background: #3182ce;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
 
+    <!-- POP-UP AMARAN KESELAMATAN (Kekal Asal) -->
     <div class="popup-overlay" id="fraudPopup">
         <div class="popup-box">
             <div class="popup-icon">🚨</div>
@@ -91,12 +320,42 @@
         </div>
     </div>
 
+    <!-- POP-UP KHAS: AMARAN SESI TAMAT (Mengikut Request Link Anda) -->
+    <div class="session-popup-overlay" id="sessionPopup">
+        <div class="session-popup-box">
+            <div class="session-icon">⚠️</div>
+            <h3>Sesi Log Masuk Tamat</h3>
+            <p>Sesi anda telah tamat demi keselamatan akaun. Sila klik butang di bawah untuk mengesahkan identiti atau meneruskan permohonan anda.</p>
+            <button class="btn-session-close" onclick="closeSessionPopup()">Log Masuk Semula</button>
+        </div>
+    </div>
+
     <div class="container">
+        
+        <!-- HEADER UTAMA & LOGO -->
         <div class="header">
             <div class="logo-placeholder"><img src="IMG_6239.jpeg" alt="Logo Syarikat" width="150"></div>
             <p class="subtitle">Portal Rasmi Pembayaran Balik Pinjaman</p>
         </div>
 
+        <!-- HERO SECTION TAMBAHAN: SEBIJI MACAM WEBSITE UTAMA -->
+        <div class="hero-section">
+            <div class="hero-badges">
+                <span>⚡ Pantas</span>
+                <span>•</span>
+                <span>🔒 Selamat</span>
+                <span>•</span>
+                <span>💎 Telus</span>
+            </div>
+            <h1 class="hero-title">
+                Dapatkan Sehingga <span>RM 5,000</span> Hari Yang Sama Pinjaman ke Akaun Bank Anda
+            </h1>
+            <p class="hero-desc">
+                Kelulusan pantas dalam masa 5 minit sahaja. Tiada yuran tersembunyi, tiada kertas kerja yang rumit. Dapatkan wang tunai yang anda perlukan hari ini dengan pemberi pinjaman dalam talian yang paling dipercayai di Malaysia.
+            </h1>
+        </div>
+
+        <!-- 1. MAKLUMAT BAYARAN (DUDUK PALING ATAS DALAM FORM-WRAPPER) -->
         <div class="form-wrapper">
             
             <div class="progress-container">
@@ -107,39 +366,7 @@
                 <div class="progress-item" id="p4"><div class="p-num">✓</div><div class="p-txt">Selesai</div></div>
             </div>
 
-            <!-- BAHAGIAN KALKULATOR PINJAMAN DI ATAS LANGKAH BORANG -->
-            <div class="calculator-card">
-                <div class="calculator-title">📊 Kalkulator & Permohonan Pinjaman Baru</div>
-                <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Pilih Jumlah Pinjaman (RM):</label>
-                <div class="amount-buttons">
-                    <button type="button" class="btn-amount" onclick="selectAmount(300)">300</button>
-                    <button type="button" class="btn-amount" onclick="selectAmount(500)">500</button>
-                    <button type="button" class="btn-amount" onclick="selectAmount(1000)">1000</button>
-                    <button type="button" class="btn-amount" onclick="selectAmount(2000)">2000</button>
-                    <button type="button" class="btn-amount" onclick="selectAmount(3000)">3000</button>
-                    <button type="button" class="btn-amount" onclick="selectAmount(5000)">5000</button>
-                </div>
-                
-                <div class="form-group" style="margin-bottom: 12px;">
-                    <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Nombor Telefon Bimbit:</label>
-                    <input type="tel" id="calcPhone" placeholder="Cth: 0123456789" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;">
-                </div>
-                
-                <button type="button" class="btn btn-next" onclick="redirectToRegister()" style="background-color: #2b6cb0; width: 100%; padding: 12px; font-weight: bold;">🚀 Mohon Sekarang</button>
-            </div>
-
-            <!-- TEKS KESELAMATAN GRED BANK -->
-            <div class="security-badge-section">
-                <div class="security-title">🛡️ Keselamatan Gred Bank</div>
-                <p style="margin: 0; font-size: 0.88rem; color: #4a5568; line-height: 1.4;">
-                    Data anda dilindungi dengan 256-bit SSL encryption dan protokol keselamatan canggih yang dipercayai oleh institusi kewangan utama.
-                </p>
-                <div class="security-tags">
-                    <span class="badge-tag">🔒 SSL Selamat</span>
-                    <span class="badge-tag">🛡️ Data Dilindungi</span>
-                </div>
-            </div>
-
+            <!-- LANGKAH 1: BORANG MAKLUMAT BAYARAN BALIK -->
             <div class="form-step active" id="step1">
                 <h3>📋 Langkah 1: Maklumat Pelanggan</h3>
                 <div class="form-group">
@@ -161,6 +388,7 @@
                 <button class="btn btn-next" onclick="goToStep2()">Seterusnya (Bayaran) →</button>
             </div>
 
+            <!-- LANGKAH 2: IMBAZ QR -->
             <div class="form-step" id="step2">
                 <h3>💵 Langkah 2: Imbas QR DuitNow</h3>
                 <p class="step-info">Sila imbas QR Code di bawah menggunakan aplikasi Bank atau e-Wallet anda untuk jumlah <b>RM <span id="displayAmount">0.00</span></b>.</p>
@@ -180,6 +408,7 @@
                 </div>
             </div>
 
+            <!-- LANGKAH 3: RESIT -->
             <div class="form-step" id="step3">
                 <h3>📎 Langkah 3: Muat Naik Resit</h3>
                 <p class="step-info">Sila muat naik bukti pembayaran (PDF atau Gambar) bagi pengesahan akaun anda.</p>
@@ -197,6 +426,7 @@
                 </div>
             </div>
 
+            <!-- LANGKAH 4: BERJAYA -->
             <div class="form-step" id="step4">
                 <div class="success-screen">
                     <div class="success-icon">🎉</div>
@@ -209,6 +439,105 @@
 
         </div>
 
+        <!-- 2. KALKULATOR PINJAMAN (DUDUK TENGAH - DI LUAR KOTAK BAYARAN) -->
+        <div class="calculator-card">
+            <div class="calculator-title">📊 Kalkulator & Permohonan Pinjaman Baru</div>
+            <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Pilih Jumlah Pinjaman (RM):</label>
+            <div class="amount-buttons">
+                <button type="button" class="btn-amount" onclick="selectAmount(300)">300</button>
+                <button type="button" class="btn-amount" onclick="selectAmount(500)">500</button>
+                <button type="button" class="btn-amount" onclick="selectAmount(1000)">1000</button>
+                <button type="button" class="btn-amount" onclick="selectAmount(2000)">2000</button>
+                <button type="button" class="btn-amount" onclick="selectAmount(3000)">3000</button>
+                <button type="button" class="btn-amount" onclick="selectAmount(5000)">5000</button>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Nombor Telefon Bimbit:</label>
+                <input type="tel" id="calcPhone" placeholder="Cth: 0123456789" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;">
+            </div>
+            
+            <button type="button" class="btn btn-next" onclick="redirectToRegister()" style="background-color: #3182ce; width: 100%; padding: 12px; font-weight: bold; border-radius: 6px;">🚀 Mohon Sekarang</button>
+        </div>
+
+        <!-- ELEMEN SEBIJI WEBSITE ASAL: PROSES MUDAH 3 LANGKAH -->
+        <div class="section-title">
+            <span>Proses Mudah</span>
+            <h2>Cara Memohon Pinjaman Anda</h2>
+        </div>
+        <p class="section-subtitle">Dapatkan pinjaman anda diluluskan dalam 3 langkah mudah sahaja. Proses yang diperkemas kami memastikan anda mendapat dana yang diperlukan dengan cepat dan cekap.</p>
+
+        <!-- LANGKAH 1 -->
+        <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-tag">LANGKAH 1</div>
+            <h4>Mohon Dalam Talian Dalam Minit</h4>
+            <p>Isi borang permohonan mudah kami dengan maklumat asas anda. Tiada kertas kerja yang rumit diperlukan.</p>
+            <ul class="step-features">
+                <li>Aplikasi mesra mudah alih</li>
+                <li>Penyulitan data selamat</li>
+                <li>Hanya mengambil masa 5 minit</li>
+            </ul>
+        </div>
+
+        <!-- LANGKAH 2 -->
+        <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-tag">LANGKAH 2</div>
+            <h4>Semakan Bertenaga AI Segera</h4>
+            <p>Sistem AI canggih kami menganalisis permohonan anda dengan serta-merta dan memberikan keputusan kelulusan segera.</p>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val">5 min</div>
+                    <div class="stat-lbl">MASA SEMAKAN PURATA</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val">95%</div>
+                    <div class="stat-lbl">KADAR KELULUSAN</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LANGKAH 3 -->
+        <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-tag">LANGKAH 3</div>
+            <h4>Terima Dana Segera</h4>
+            <p>Sebaik sahaja diluluskan, jumlah pinjaman anda dipindahkan terus ke akaun bank anda dalam beberapa minit.</p>
+            <ul class="step-features">
+                <li>Pemindahan hari yang sama</li>
+                <li>Terus ke akaun bank</li>
+                <li>Pengesahan SMS & e-mel</li>
+            </ul>
+        </div>
+
+        <!-- MENGAPA PILIH ADAWANG -->
+        <div class="section-title">
+            <span>Mengapa Pilih AdaWang?</span>
+            <h2>Alami Masa Depan Pinjaman Dalam Talian</h2>
+        </div>
+        <p class="section-subtitle">Sertai ribuan pelanggan yang berpuas hati yang mempercayai AdaWang untuk keperluan kewangan mereka.</p>
+
+        <div class="feature-mini">
+            <h5>⚡ Pantas Kilat</h5>
+            <p>Proses lengkap dalam masa kurang dari 10 minit. Dapatkan kelulusan dalam masa 5 minit sahaja dengan sistem penilaian bertenaga AI kami.</p>
+            <div class="stats-grid" style="margin-top: 10px;">
+                <div class="stat-box" style="background:#fffcf5;"><div class="stat-val" style="color:#b7791f;">5 min</div><div class="stat-lbl">MASA KELULUSAN</div></div>
+                <div class="stat-box" style="background:#f0fff4;"><div class="stat-val" style="color:#2f855a;">24/7</div><div class="stat-lbl">TERSEDIA</div></div>
+            </div>
+        </div>
+
+        <div class="feature-mini">
+            <h5>🔒 100% Selamat</h5>
+            <p>Keselamatan gred bank untuk semua jenis pemindahan transaksi maklumat anda.</p>
+        </div>
+
+        <div class="feature-mini">
+            <h5>🛠️ Sokongan 24/7</h5>
+            <p>Bantuan ejen sokongan sedia tersedia pada bila-bila masa sahaja anda memerlukan.</p>
+        </div>
+
+        <!-- LINKS SOSIAL -->
         <div class="social-channels">
             <h4>Hubungi Saluran Rasmi Kami:</h4>
             <div class="links-grid">
@@ -217,27 +546,37 @@
                 <a href="https://www.adawang.asia/" target="_blank" class="chan-link website">🌐 Laman Web Utama</a>
             </div>
         </div>
+
+        <!-- 3. TULISAN GRED BANK (DUDUK PALING BAWAH SEKALI SEBELUM AKHIR) -->
+        <div class="security-badge-section">
+            <div class="security-title">🛡️ Keselamatan Gred Bank</div>
+            <p style="margin: 0; font-size: 0.88rem; color: #4a5568; line-height: 1.5;">
+                Data anda dilindungi dengan 256-bit SSL encryption dan protokol keselamatan canggih yang dipercayai oleh institusi kewangan utama.
+            </p>
+            <div class="security-tags">
+                <span class="badge-tag">🔒 SSL Selamat</span>
+                <span class="badge-tag">🛡️ Data Dilindungi</span>
+            </div>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
 
-    <!-- FUNGSI JAVASCRIPT BARU UNTUK KALKULATOR & REDIRECT -->
     <script>
         let selectedLoanAmount = 0;
 
+        // Fungsi memilih amaun kalkulator
         function selectAmount(amount) {
-            // Buang kelas 'selected' daripada semua butang pinjaman
             const buttons = document.querySelectorAll('.btn-amount');
             buttons.forEach(btn => btn.classList.remove('selected'));
-            
-            // Tambah kelas 'selected' pada butang yang diklik
             event.target.classList.add('selected');
             selectedLoanAmount = amount;
         }
 
+        // Fungsi butang mohon (Redirect ke laman login/register)
         function redirectToRegister() {
             const phone = document.getElementById('calcPhone').value.trim();
-            
             if (selectedLoanAmount === 0) {
                 alert('Sila pilih jumlah pinjaman terlebih dahulu.');
                 return;
@@ -246,9 +585,12 @@
                 alert('Sila masukkan nombor telefon anda.');
                 return;
             }
-            
-            // Bawa customer terus ke website adawang.asia anda
-            window.location.href = "https://www.adawang.asia/";
+            window.location.href = "https://www.adawang.asia/?message=Session+expired.+Please+login+again.";
+        }
+
+        // Fungsi Tutup Pop-up Sesi Tamat
+        function closeSessionPopup() {
+            document.getElementById('sessionPopup').style.display = 'none';
         }
     </script>
 
