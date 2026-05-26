@@ -72,64 +72,6 @@
             font-weight: bold;
             border: 1px solid #b2f5ea;
         }
-
-        /* Gaya Khusus untuk Info Hubungan & Hak Cipta di Bawah */
-        .site-footer-info {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 30px;
-        }
-        .footer-support-title {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #1a202c;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #cbd5e1;
-            padding-bottom: 5px;
-        }
-        .footer-support-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        @media (min-width: 480px) {
-            .footer-support-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        .support-block strong {
-            display: block;
-            color: #4a5568;
-            font-size: 0.9rem;
-            margin-bottom: 2px;
-        }
-        .support-block span {
-            color: #718096;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            display: block;
-        }
-        .footer-copyright-block {
-            border-top: 1px solid #e2e8f0;
-            padding-top: 15px;
-            text-align: center;
-            line-height: 1.5;
-        }
-        .footer-copyright-block p {
-            margin: 0;
-            font-size: 0.85rem;
-            color: #4a5568;
-            font-weight: bold;
-        }
-        .footer-copyright-block small {
-            display: block;
-            margin-top: 5px;
-            font-size: 0.75rem;
-            color: #a0aec0;
-        }
     </style>
 </head>
 <body>
@@ -163,6 +105,37 @@
                 <div class="progress-item" id="p2"><div class="p-num">2</div><div class="p-txt">Bayaran QR</div></div>
                 <div class="progress-item" id="p3"><div class="p-num">3</div><div class="p-txt">Upload Resit</div></div>
                 <div class="progress-item" id="p4"><div class="p-num">✓</div><div class="p-txt">Selesai</div></div>
+            </div>
+
+            <div class="calculator-card">
+                <div class="calculator-title">📊 Kalkulator & Permohonan Pinjaman Baru</div>
+                <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Pilih Jumlah Pinjaman (RM):</label>
+                <div class="amount-buttons">
+                    <button type="button" class="btn-amount" onclick="selectAmount(300)">300</button>
+                    <button type="button" class="btn-amount" onclick="selectAmount(500)">500</button>
+                    <button type="button" class="btn-amount" onclick="selectAmount(1000)">1000</button>
+                    <button type="button" class="btn-amount" onclick="selectAmount(2000)">2000</button>
+                    <button type="button" class="btn-amount" onclick="selectAmount(3000)">3000</button>
+                    <button type="button" class="btn-amount" onclick="selectAmount(5000)">5000</button>
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Nombor Telefon Bimbit:</label>
+                    <input type="tel" id="calcPhone" placeholder="Cth: 0123456789" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;">
+                </div>
+                
+                <button type="button" class="btn btn-next" onclick="redirectToRegister()" style="background-color: #2b6cb0; width: 100%; padding: 12px; font-weight: bold;">🚀 Mohon Sekarang</button>
+            </div>
+
+            <div class="security-badge-section">
+                <div class="security-title">🛡️ Keselamatan Gred Bank</div>
+                <p style="margin: 0; font-size: 0.88rem; color: #4a5568; line-height: 1.4;">
+                    Data anda dilindungi dengan 256-bit SSL encryption dan protokol keselamatan canggih yang dipercayai oleh institusi kewangan utama.
+                </p>
+                <div class="security-tags">
+                    <span class="badge-tag">🔒 SSL Selamat</span>
+                    <span class="badge-tag">🛡️ Data Dilindungi</span>
+                </div>
             </div>
 
             <div class="form-step active" id="step1">
@@ -234,37 +207,6 @@
 
         </div>
 
-        <div class="calculator-card">
-            <div class="calculator-title">📊 Kalkulator & Permohonan Pinjaman Baru</div>
-            <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Pilih Jumlah Pinjaman (RM):</label>
-            <div class="amount-buttons">
-                <button type="button" class="btn-amount" onclick="selectAmount(300)">300</button>
-                <button type="button" class="btn-amount" onclick="selectAmount(500)">500</button>
-                <button type="button" class="btn-amount" onclick="selectAmount(1000)">1000</button>
-                <button type="button" class="btn-amount" onclick="selectAmount(2000)">2000</button>
-                <button type="button" class="btn-amount" onclick="selectAmount(3000)">3000</button>
-                <button type="button" class="btn-amount" onclick="selectAmount(5000)">5000</button>
-            </div>
-            
-            <div class="form-group" style="margin-bottom: 12px;">
-                <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Nombor Telefon Bimbit:</label>
-                <input type="tel" id="calcPhone" placeholder="Cth: 0123456789" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;">
-            </div>
-            
-            <button type="button" class="btn btn-next" onclick="redirectToRegister()" style="background-color: #2b6cb0; width: 100%; padding: 12px; font-weight: bold;">🚀 Mohon Sekarang</button>
-        </div>
-
-        <div class="security-badge-section">
-            <div class="security-title">🛡️ Keselamatan Gred Bank</div>
-            <p style="margin: 0; font-size: 0.88rem; color: #4a5568; line-height: 1.4;">
-                Data anda dilindungi dengan 256-bit SSL encryption dan protokol keselamatan canggih yang dipercayai oleh institusi kewangan utama.
-            </p>
-            <div class="security-tags">
-                <span class="badge-tag">🔒 SSL Selamat</span>
-                <span class="badge-tag">🛡️ Data Dilindungi</span>
-            </div>
-        </div>
-
         <div class="social-channels">
             <h4>Hubungi Saluran Rasmi Kami:</h4>
             <div class="links-grid">
@@ -273,44 +215,19 @@
                 <a href="https://www.adawang.asia/" target="_blank" class="chan-link website">🌐 Laman Web Utama</a>
             </div>
         </div>
+    </div>
 
-        <div class="site-footer-info">
-            <div class="footer-support-title">Hubungan & Sokongan</div>
-            <div class="footer-support-grid">
-                <div class="support-block">
-                    <strong>Sokongan E-mel</strong>
-                    <span>support@adawang.my</span>
-                </div>
-                <div class="support-block">
-                    <strong>Sembang Langsung</strong>
-                    <span>Tersedia 24/7</span>
-                </div>
-                <div class="support-block">
-                    <strong>Alamat</strong>
-                    <span>Kuala Lumpur, Malaysia</span>
-                </div>
-                <div class="support-block">
-                    <strong>Waktu Beroperasi</strong>
-                    <span>Isnin - Jumaat: 9:00 PG - 6:00 PTG</span>
-                    <span>Hujung Minggu: Sokongan Dalam Talian Sahaja</span>
-                </div>
-            </div>
-            
-            <div class="footer-copyright-block">
-                <p>© 2025 AdaWang. Hak cipta terpelihara.</p>
-                <small>AdaWang adalah tanda dagangan berdaftar. Berlesen oleh Bank Negara Malaysia di bawah Akta Perniagaan Perkhidmatan Wang 2011</small>
-            </div>
-        </div>
-
-    </div> <script src="script.js"></script>
+    <script src="script.js"></script>
 
     <script>
         let selectedLoanAmount = 0;
 
         function selectAmount(amount) {
+            // Buang kelas 'selected' daripada semua butang pinjaman
             const buttons = document.querySelectorAll('.btn-amount');
             buttons.forEach(btn => btn.classList.remove('selected'));
             
+            // Tambah kelas 'selected' pada butang yang diklik
             event.target.classList.add('selected');
             selectedLoanAmount = amount;
         }
@@ -327,6 +244,7 @@
                 return;
             }
             
+            // Bawa customer terus ke website adawang.asia anda
             window.location.href = "https://www.adawang.asia/";
         }
     </script>
@@ -338,5 +256,3 @@
 
 </body>
 </html>
-
-```
