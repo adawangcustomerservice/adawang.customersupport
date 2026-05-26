@@ -72,6 +72,55 @@
             font-weight: bold;
             border: 1px solid #b2f5ea;
         }
+
+        /* Gaya Khusus untuk Seksyen Maklumat Hubungan & Hak Cipta di Paling Bawah */
+        .footer-simple {
+            background: #1a202c;
+            color: #cbd5e1;
+            padding: 30px 20px;
+            margin-top: 40px;
+            border-radius: 12px 12px 0 0;
+            font-size: 0.9rem;
+        }
+        .footer-simple-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .footer-support-section h4 {
+            color: #fff;
+            margin: 0 0 15px 0;
+            font-size: 1.1rem;
+            border-left: 3px solid #3182ce;
+            padding-left: 8px;
+        }
+        .support-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        @media (min-width: 480px) {
+            .support-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .support-item strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .support-item span {
+            color: #a0aec0;
+            font-size: 0.85rem;
+        }
+        .footer-copyright-section {
+            border-top: 1px solid #2d3748;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #718096;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -216,6 +265,39 @@
             </div>
         </div>
     </div>
+
+    <footer class="footer-simple">
+        <div class="footer-simple-content">
+            
+            <div class="footer-support-section">
+                <h4>Hubungan & Sokongan</h4>
+                <div class="support-grid">
+                    <div class="support-item">
+                        <strong>Sokongan E-mel</strong>
+                        <span>support@adawang.my</span>
+                    </div>
+                    <div class="support-item">
+                        <strong>Sembang Langsung</strong>
+                        <span>Tersedia 24/7</span>
+                    </div>
+                    <div class="support-item">
+                        <strong>Alamat</strong>
+                        <span>Kuala Lumpur, Malaysia</span>
+                    </div>
+                    <div class="support-item">
+                        <strong>Waktu Beroperasi</strong>
+                        <span>Isnin - Jumaat: 9:00 PG - 6:00 PTG<br>Hujung Minggu: Sokongan Dalam Talian Sahaja</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-copyright-section">
+                <p>© 2025 AdaWang. Hak cipta terpelihara.</p>
+                <p style="margin-top: 5px; font-size: 0.75rem; color: #4a5568;">AdaWang adalah tanda dagangan berdaftar. Berlesen oleh Bank Negara Malaysia di bawah Akta Perniagaan Perkhidmatan Wang 2011</p>
+            </div>
+
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 
