@@ -20,7 +20,6 @@
         .header{text-align:center;margin-bottom:15px;}
         .logo-placeholder img{max-width:110px;border-radius:20px;margin-bottom:10px;}
         .subtitle {font-size:.97em;color:#22913c;}
-        /* Popup Amaran Scammer */
         .popup-overlay {
             position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
             background: rgba(27,32,27,0.95); z-index: 10000;
@@ -50,7 +49,6 @@
         }
         .btn-popup-close:hover { background:#1f8439; }
         .popup-icon {font-size:2.1em;margin-bottom:5px;text-align:center;}
-        /* Seksyen utama info pembayaran */
         .security-warning-section {
             background: #fffcea;
             border-left: 5px solid #e53e3e;
@@ -63,7 +61,6 @@
             color:#c53030;font-weight:700;font-size:1.10em;margin-bottom:9px;
         }
         .security-warning-section ul {margin-top:10px;}
-        /* Kalkulator Pinjaman Slider */
         .calculator-card {
             background: #fff;
             border-radius: 12px;
@@ -100,7 +97,6 @@
         }
         .calculator-card .btn {background:#22913c;color:#fff;width:100%;padding:13px 0;font-weight:600;font-size:1.09em;border:0;border-radius:8px;box-shadow:0 2px 12px #2b6cb020;transition:background .17s;}
         .calculator-card .btn:hover{background:#117a2e;}
-        /* BAYARAN FORM ala ewallet */
         .payment-card {
             background: #f6fffa;
             border-radius:16px;
@@ -146,7 +142,6 @@
         .btn-back:hover{background:#fff;}
         .btn-success{background:#22913c;color:#fff;}
         .btn-success:hover{background:#117a2e;}
-        /* Success screen */
         .success-screen{text-align:center;padding:40px 5px;}
         .success-icon{font-size:3.2em;padding:18px;}
         .status-badge{background:#ebfbf1;color:#22913c;font-weight:600;border-radius:8px;padding:6px 0;margin-top:15px;}
@@ -158,7 +153,7 @@
 </head>
 <body>
 
-    <!-- POPUP BARU: AMARAN SCAMMER -->
+    <!-- POPUP SCAMMER -->
     <div class="popup-overlay" id="fraudPopup">
         <div class="popup-box">
             <div class="popup-icon">🚨</div>
@@ -192,7 +187,6 @@
     </div>
 
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <div class="logo-placeholder">
                 <img src="IMG_6239.jpeg" alt="Logo Syarikat">
@@ -200,7 +194,6 @@
             <p class="subtitle">Portal Rasmi Pembayaran Balik Pinjaman</p>
         </div>
 
-        <!-- Amaran/Info -->
         <div class="security-warning-section">
             <div class="section-title">Maklumat Pembayaran & Keselamatan Adawang</div>
             <ul>
@@ -211,7 +204,7 @@
             </ul>
         </div>
 
-        <!-- Kalkulator Slider (boleh hide jika mahu) -->
+        <!-- Kalkulator Slider -->
         <div class="calculator-card">
             <div class="calculator-title">📊 Kalkulator & Permohonan Pinjaman Baru</div>
             <div class="amount-slider-label">Pilih Jumlah Pinjaman (RM):</div>
@@ -226,7 +219,7 @@
             <button type="button" class="btn" onclick="scrollToForm()">Mohon Sekarang</button>
         </div>
 
-        <!-- FORM PEMBAYARAN (e-wallet style) -->
+        <!-- FORM PEMBAYARAN ala ewallet/bank -->
         <form class="payment-card" id="paymentForm" autocomplete="off">
             <h3>💵 Bayaran Balik Pinjaman (Adawang)</h3>
             <div class="form-group">
@@ -258,7 +251,7 @@
                 <img src="duitnow-qr.png" alt="QR DuitNow" onerror="this.src='https://placehold.co/200x200?text=QR+Payment'">
             </div>
             <div class="payment-details">
-                <b>Penerima:</b> ADAWANG SDN BHD <br>
+                <b>Penerima:</b> SHAFIQ SHOP <br>
                 <b>Nombor Rujukan:</b> <span id="refIC"></span>
             </div>
             <div class="btn-group">
@@ -311,7 +304,6 @@
         function displayLoanValue(slider){
             document.getElementById('loanSliderValue').innerText = "RM " + slider.value;
         }
-        // Smooth scroll ke payment form
         function scrollToForm(){
             document.getElementById('paymentForm').scrollIntoView({behavior:"smooth", block:"center"});
         }
@@ -352,7 +344,6 @@
             byId('uploadSection').style.display="none";
             byId('qrSection').style.display="";
         }
-        // file upload validation
         function fileSelected(){
             let f = byId('receiptFile').files[0],s=byId('uploadStatus'),btn=byId('btnSubmit');
             if(!f){s.innerText="Klik di sini untuk pilih resit";btn.disabled=true;return;}
