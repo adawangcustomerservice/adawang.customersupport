@@ -3,256 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laman Web Pembayaran Rasmi Adawang</title>
+    <title>Laman Web Pembayaran Rasmi Adawang.asia</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Gaya Tambahan untuk Kalkulator dan Elemen Keselamatan */
-        .calculator-card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 25px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-        }
-        .calculator-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #2d3748;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        .amount-buttons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .btn-amount {
-            background: #f7fafc;
-            border: 1px solid #cbd5e1;
-            padding: 10px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: #4a5568;
-        }
-        .btn-amount.selected {
-            background: #3182ce;
-            color: white;
-            border-color: #3182ce;
-        }
-        .security-badge-section {
-            background: #f7fafc;
-            border-left: 4px solid #38a169;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        .security-title {
-            color: #276749;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 5px;
-        }
-        .security-tags {
-            display: flex;
-            gap: 10px;
-            margin-top: 8px;
-        }
-        .badge-tag {
-            background: #e6fffa;
-            color: #234e52;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border: 1px solid #b2f5ea;
-        }
-    </style>
+<style>
+    .calculator-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 25px 0;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        border: 1px solid #e2e8f0;
+    }
+    .calculator-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #2d3748;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .security-badge-section {
+        background: #f7fafc;
+        border-left: 4px solid #38a169;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 8px 8px 0;
+    }
+    .security-title {
+        color: #276749;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 5px;
+    }
+    .security-tags {
+        display: flex;
+        gap: 10px;
+        margin-top: 8px;
+    }
+    .badge-tag {
+        background: #e6fffa;
+        color: #234e52;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        border: 1px solid #b2f5ea;
+    }
+    .popup-overlay{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.7);
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        z-index:9999;
+    }
+    .popup-box{
+        background:white;
+        width:90%;
+        max-width:550px;
+        border-radius:12px;
+        padding:20px;
+        max-height:90vh;
+        overflow-y:auto;
+    }
+    .popup-icon{
+        font-size:50px;
+        text-align:center;
+        margin-bottom:10px;
+    }
+    .btn-popup-close{
+        width:100%;
+        padding:12px;
+        border:none;
+        background:#2563eb;
+        color:white;
+        border-radius:8px;
+        cursor:pointer;
+        font-weight:bold;
+        margin-top:15px;
+    }
+</style>
 </head>
 <body>
-
-    <div class="popup-overlay" id="fraudPopup">
-        <div class="popup-box">
-            <div class="popup-icon">🚨</div>
-            <h2>AMARAN KESELAMATAN KEPADA PELANGGAN ADAWANG</h2>
-            <div class="popup-content">
-                <p><b>1. 🔒 Rahsia Peribadi:</b> Jangan sesekali berkongsi kata laluan atau kod PIN anda dengan sesiapa sahaja termasuk ejen kami.</p>
-                <p><b>2. 🌐 Website Rasmi:</b> Pastikan anda hanya melayari pautan rasmi kami di <a href="https://www.adawang.asia/" target="_blank">www.adawang.asia</a> untuk mengelakkan taktik penipuan.</p>
-                <p><b>3. 📱 QR Code DuitNow:</b> Hanya buat pembayaran menggunakan QR Code DuitNow rasmi yang dipaparkan di dalam website ini sahaja.</p>
-                <p><b>4. 📞 Panggilan Palsu:</b> Berhati-hati dengan panggilan atau whatsapp yang mengaku dari adawang staff pembayaran tidak dibuat di whatsapp atau telegram hanya di website pembayaran atau website permohonan sahaja .</p>
-                <p><b>5. 🚨 Lapor Segera:</b> Jika anda mendapati sebarang transaksi atau aktiviti yang mencurigakan, sila hubungi talian sokongan kami dengan kadar segera.</p>
-            </div>
-            <button class="btn-popup-close" onclick="closePopup()">Saya Faham</button>
+<!-- POPUP KESELAMATAN -->
+<div class="popup-overlay" id="fraudPopup">
+    <div class="popup-box">
+        <div class="popup-icon">🚨</div>
+        <h2>AMARAN KESELAMATAN KEPADA PELANGGAN ADAWANG</h2>
+        <div class="popup-content">
+            <p><b>1. 🔒 Rahsia Peribadi:</b> Jangan sesekali berkongsi kata laluan atau kod PIN anda dengan sesiapa sahaja termasuk ejen kami.</p>
+            <p><b>2. 🌐 Website Rasmi:</b> Pastikan anda hanya melayari pautan rasmi kami di <a href="https://www.adawang.asia/" target="_blank">www.adawang.asia</a></p>
+            <p><b>3. 📱 QR Code DuitNow:</b> Hanya buat pembayaran menggunakan QR Code DuitNow rasmi yang dipaparkan di dalam website ini sahaja.</p>
+            <p><b>4. 📞 Peringatan:</b> Jangan percaya mana-mana pihak yang mengaku agent ADAWANG di WHATSAPP atau TELEGRAM.</p>
+            <p><b>5. 🚨 Lapor Segera:</b> Jika anda mendapati sebarang transaksi atau aktiviti yang mencurigakan, sila hubungi talian sokongan kami dengan kadar segera.</p>
         </div>
+        <button class="btn-popup-close" onclick="closePopup()">Saya Faham</button>
     </div>
-
-    <div class="container">
-        <div class="header">
-            <div class="logo-placeholder"><img src="IMG_6239.jpeg" alt="Logo Syarikat" width="150"></div>
-            <p class="subtitle">Portal Rasmi Pembayaran Balik Pinjaman</p>
-        </div>
-
-        <div class="form-wrapper">
-            
-            <div class="progress-container">
-                <div class="progress-line"><div class="progress-line-fill" id="progressLine"></div></div>
-                <div class="progress-item active" id="p1"><div class="p-num">1</div><div class="p-txt">Maklumat</div></div>
-                <div class="progress-item" id="p2"><div class="p-num">2</div><div class="p-txt">Bayaran QR</div></div>
-                <div class="progress-item" id="p3"><div class="p-num">3</div><div class="p-txt">Upload Resit</div></div>
-                <div class="progress-item" id="p4"><div class="p-num">✓</div><div class="p-txt">Selesai</div></div>
-            </div>
-
-            <div class="calculator-card">
-                <div class="calculator-title">📊 Kalkulator & Permohonan Pinjaman Baru</div>
-                <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Pilih Jumlah Pinjaman (RM):</label>
-                <div class="amount-buttons">
-                    <button type="button" class="btn-amount" onclick="selectAmount(300)">300</button>
-                    <button type="button" class="btn-amount" onclick="selectAmount(500)">500</button>
-                    <button type="button" class="btn-amount" onclick="selectAmount(1000)">1000</button>
-                    <button type="button" class="btn-amount" onclick="selectAmount(2000)">2000</button>
-                    <button type="button" class="btn-amount" onclick="selectAmount(3000)">3000</button>
-                    <button type="button" class="btn-amount" onclick="selectAmount(5000)">5000</button>
-                </div>
-                
-                <div class="form-group" style="margin-bottom: 12px;">
-                    <label style="font-size: 0.9rem; font-weight: bold; color: #4a5568;">Nombor Telefon Bimbit:</label>
-                    <input type="tel" id="calcPhone" placeholder="Cth: 0123456789" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;">
-                </div>
-                
-                <button type="button" class="btn btn-next" onclick="redirectToRegister()" style="background-color: #2b6cb0; width: 100%; padding: 12px; font-weight: bold;">🚀 Mohon Sekarang</button>
-            </div>
-
-            <div class="security-badge-section">
-                <div class="security-title">🛡️ Keselamatan Gred Bank</div>
-                <p style="margin: 0; font-size: 0.88rem; color: #4a5568; line-height: 1.4;">
-                    Data anda dilindungi dengan 256-bit SSL encryption dan protokol keselamatan canggih yang dipercayai oleh institusi kewangan utama.
-                </p>
-                <div class="security-tags">
-                    <span class="badge-tag">🔒 SSL Selamat</span>
-                    <span class="badge-tag">🛡️ Data Dilindungi</span>
-                </div>
-            </div>
-
-            <div class="form-step active" id="step1">
-                <h3>📋 Langkah 1: Maklumat Pelanggan Adawang</h3>
-                <div class="form-group">
-                    <label>Nama Penuh (Seperti dalam IC) *</label>
-                    <input type="text" id="fullname" placeholder="Masukkan nama penuh anda" required>
-                </div>
-                <div class="form-group">
-                    <label>Nombor Kad Pengenalan (IC) *</label>
-                    <input type="text" id="icnumber" placeholder="Cth: 950102035432" maxlength="12" required>
-                </div>
-                <div class="form-group">
-                    <label>ID Aplikasi (APP NUMBER) *</label>
-                    <input type="text" id="appid" placeholder="Cth: APP0000001" required>
-                </div>
-                <div class="form-group">
-                    <label>Jumlah Bayaran Balik (RM) *</label>
-                    <input type="number" id="amount" placeholder="0.00" step="0.01" required>
-                </div>
-                <button class="btn btn-next" onclick="goToStep2()">Seterusnya (Bayaran) →</button>
-            </div>
-
-            <div class="form-step" id="step2">
-                <h3>💵 Langkah 2: Imbas QR DuitNow</h3>
-                <p class="step-info">Sila imbas QR Code di bawah menggunakan aplikasi Bank atau e-Wallet anda untuk jumlah <b>RM <span id="displayAmount">0.00</span></b>.</p>
-                
-                <div class="qr-container">
-                    <img src="37185387-837C-43AE-B646-C0F0A036F39D.jpeg" alt="DuitNow QR Code Adawang" class="qr-image" onerror="this.src='https://placehold.co/250x250?text=Sila+Upload+QR+DuitNow'">
-                </div>
-
-                <div class="payment-details">
-    <p><b>Penerima:</b> ShafiqShop</p>
-    <p><b>Number APP:</b> <span id="displayAppId">APP0000000</span></p>
 </div>
-
-                <div class="btn-group">
-                    <button class="btn btn-back" onclick="prevStep(1)">← Kembali</button>
-                    <button class="btn btn-next" onclick="nextStep(3)">Saya Dah Bayar →</button>
-                </div>
-            </div>
-
-            <div class="form-step" id="step3">
-                <h3>📎 Langkah 3: Muat Naik Resit</h3>
-                <p class="step-info">Sila muat naik bukti pembayaran (PDF atau Gambar) bagi pengesahan akaun anda.</p>
-                
-                <div class="upload-box" onclick="document.getElementById('receiptFile').click()">
-                    <div class="upload-icon">📤</div>
-                    <p id="uploadStatus">Klik di sini untuk pilih resit</p>
-                    <span style="font-size: 0.8em; color: #a0aec0;">Format: PNG, JPG, JPEG, PDF (Maks: 5MB)</span>
-                    <input type="file" id="receiptFile" accept=".png,.jpg,.jpeg,.pdf" style="display:none;" onchange="fileSelected()">
-                </div>
-
-                <div class="btn-group">
-                    <button class="btn btn-back" onclick="prevStep(2)">← Kembali</button>
-                    <button class="btn btn-success" onclick="submitReceipt()">Hantar Pengesahan ✓</button>
-                </div>
-            </div>
-
-            <div class="form-step" id="step4">
-                <div class="success-screen">
-                    <div class="success-icon">🎉</div>
-                    <h2>Tahniah Pembayaran Berjaya!</h2>
-                    <p>Terima kasih <b><span id="displayCustomerName">Pelanggan</span></b>. Resit dan maklumat pembayaran anda untuk ID <b><span id="displayFinalAppId">APP0000000</span></b> telah berjaya diterima.</p>
-                    <div class="status-badge">Pembayaran Anda Sedang Di Proses (Maks: 24 Jam)</div>
-                    <button class="btn btn-next" onclick="resetForm()" style="margin-top: 20px;">Kembali Ke Halaman Utama</button>
-                </div>
-            </div>
-
+<!-- POPUP SCAMMER -->
+<div class="popup-overlay" id="scamPopup" style="display:none;">
+    <div class="popup-box">
+        <div class="popup-icon">⚠️</div>
+        <h2>AMARAN SCAMMER</h2>
+        <div class="popup-content">
+            <h3>🌐 LAMAN WEB RASMI</h3>
+            <p>Kami hanya ada satu (1) laman web rasmi:</p>
+            <p><b>www.adawang.asia</b></p>
+            <p><b>adawang.customersupport/</b></p>
+            <h3>💳 CARA PEMBAYARAN YANG SAH</h3>
+            <p>Login akaun anda sendiri di laman web rasmi untuk mendapatkan QR Kod Pembayaran.</p>
+            <p>Tiada bayaran melalui email, Facebook, WhatsApp atau pihak ketiga.</p>
+            <p><b>Selain dari ini adalah PENIPUAN.</b></p>
+            <h3>🚨 TAKTIK SCAMMER</h3>
+            <p>Scammer akan menghantar screenshot QR Kod palsu melalui WhatsApp.</p>
+            <p>Sila abaikan dan jangan klik pautan yang dihantar oleh pihak luar.</p>
+            <p>Sentiasa login akaun sendiri dan bayar melalui laman web rasmi sahaja.</p>
+            <h3>🏦 AKAUN BANK SCAMMER YANG DIKENALPASTI</h3>
+            <p><b>MAYBANK</b> - GYT AURORA FASHION RESOURCES</p>
+            <p><b>RHB</b> - RAJAN LORRY AUTO PARTS</p>
+            <p><b>RYT</b> - SNIP & SNIP SDN BHD</p>
+            <p style="color:red;font-weight:bold;">
+                Jangan sekali-kali memindahkan wang ke akaun ini.
+            </p>
         </div>
-
-        <div class="social-channels">
-            <h4>Hubungi Saluran Rasmi Kami:</h4>
-            <div class="links-grid">
-                <a href="https://wa.me/60123456789" target="_blank" class="chan-link whatsapp">💬 WhatsApp Sokongan</a>
-                <a href="https://t.me/adawang_support" target="_blank" class="chan-link telegram">✈️ Telegram Rasmi</a>
-                <a href="https://www.adawang.asia/" target="_blank" class="chan-link website">🌐 Laman Web Utama</a>
+        <button class="btn-popup-close" onclick="closeScamPopup()">
+            Saya Faham
+        </button>
+    </div>
+</div>
+<div class="container">
+    <div class="header">
+        <div class="logo-placeholder">
+            <img src="IMG_6239.jpeg" alt="Logo Syarikat" width="150">
+        </div>
+        <p class="subtitle">
+            Portal Rasmi Pembayaran Balik Pinjaman
+        </p>
+    </div>
+    <div class="form-wrapper">
+        <div class="calculator-card">
+            <div class="calculator-title">
+                📊 Kalkulator & Permohonan Pinjaman Baru
             </div>
+            <label style="font-size:0.9rem;font-weight:bold;color:#4a5568;">
+                Pilih Jumlah Pinjaman (RM):
+            </label>
+            <input 
+                type="range"
+                min="300"
+                max="5000"
+                step="100"
+                value="500"
+                id="loanSlider"
+                style="width:100%;margin-top:15px;"
+                oninput="updateLoanValue(this.value)"
+            >
+            <div style="text-align:center;margin-top:12px;">
+                <span style="font-size:1.6rem;font-weight:bold;color:#2b6cb0;">
+                    RM <span id="loanValue">500</span>
+                </span>
+            </div>
+            <div class="form-group" style="margin-bottom:12px;margin-top:20px;">
+                <label style="font-size:0.9rem;font-weight:bold;color:#4a5568;">
+                    Nombor Telefon Bimbit:
+                </label>
+                <input 
+                    type="tel"
+                    id="calcPhone"
+                    placeholder="Cth: 0123456789"
+                    style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:6px;box-sizing:border-box;"
+                >
+            </div>
+            <button 
+                type="button"
+                class="btn btn-next"
+                onclick="redirectToRegister()"
+                style="background-color:#2b6cb0;width:100%;padding:12px;font-weight:bold;"
+            >
+                🚀 Mohon Sekarang
+            </button>
+        </div>
+        <div class="security-badge-section">
+            <div class="security-title">
+                🛡️ Keselamatan Gred Bank
+            </div>
+            <p style="margin:0;font-size:0.88rem;color:#4a5568;line-height:1.4;">
+                Data anda dilindungi dengan 256-bit SSL encryption dan protokol keselamatan canggih yang dipercayai oleh institusi kewangan utama.
+            </p>
+            <div class="security-tags">
+                <span class="badge-tag">🔒 SSL Selamat</span>
+                <span class="badge-tag">🛡️ Data Dilindungi</span>
+            </div>
+        </div>
+        <div class="payment-details">
+            <p><b>Penerima:</b> ShafiqShop</p>
+            <p><b>Number APP:</b> <span id="displayAppId">APP0000000</span></p>
         </div>
     </div>
-
-    <script src="script.js"></script>
-
-    <script>
-        let selectedLoanAmount = 0;
-
-        function selectAmount(amount) {
-            // Buang kelas 'selected' daripada semua butang pinjaman
-            const buttons = document.querySelectorAll('.btn-amount');
-            buttons.forEach(btn => btn.classList.remove('selected'));
-            
-            // Tambah kelas 'selected' pada butang yang diklik
-            event.target.classList.add('selected');
-            selectedLoanAmount = amount;
+</div>
+<script>
+    let selectedLoanAmount = 500;
+    function updateLoanValue(value) {
+        document.getElementById('loanValue').innerText = value;
+        selectedLoanAmount = value;
+    }
+    function redirectToRegister() {
+        const phone = document.getElementById('calcPhone').value.trim();
+        if(phone === '') {
+            alert('Sila masukkan nombor telefon anda.');
+            return;
         }
-
-        function redirectToRegister() {
-            const phone = document.getElementById('calcPhone').value.trim();
-            
-            if (selectedLoanAmount === 0) {
-                alert('Sila pilih jumlah pinjaman terlebih dahulu.');
-                return;
-            }
-            if (phone === '') {
-                alert('Sila masukkan nombor telefon anda.');
-                return;
-            }
-            
-            // Bawa customer terus ke website adawang.asia anda
-            window.location.href = "https://www.adawang.asia/";
-        }
-    </script>
-
-    <script type="text/javascript">
-        window.$crisp=[];window.CRISP_WEBSITE_ID="b2ba94c5-4673-479a-a2a7-7b6c8ed5357a";
-        (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
-    </script>
-
+        window.location.href = "https://www.adawang.asia/";
+    }
+    function closePopup() {
+        document.getElementById('fraudPopup').style.display='none';
+        setTimeout(() => {
+            document.getElementById('scamPopup').style.display='flex';
+        },500);
+    }
+    function closeScamPopup() {
+        document.getElementById('scamPopup').style.display='none';
+    }
+</script>
+<script type="text/javascript">
+    window.$crisp=[];
+    window.CRISP_WEBSITE_ID="b2ba94c5-4673-479a-a2a7-7b6c8ed5357a";
+    (function(){
+        d=document;
+        s=d.createElement("script");
+        s.src="https://client.crisp.chat/l.js";
+        s.async=1;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })();
+</script>
 </body>
-</html>
+</htm
