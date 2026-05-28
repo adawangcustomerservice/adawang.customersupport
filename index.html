@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Pembayaran Adawang</title>
+    <title>Laman Web Pembayaran Rasmi Adawang</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Gaya Tambahan untuk Kalkulator dan Elemen Keselamatan */
@@ -79,12 +79,12 @@
     <div class="popup-overlay" id="fraudPopup">
         <div class="popup-box">
             <div class="popup-icon">🚨</div>
-            <h2>AMARAN KESELAMATAN KEPADA PELANGGAN</h2>
+            <h2>AMARAN KESELAMATAN KEPADA PELANGGAN ADAWANG</h2>
             <div class="popup-content">
-                <p><b>1. 🔒 Rahsia Peribadi:</b> Jangan sesekali berkongsi kata laluan atau kod TAC anda dengan sesiapa sahaja termasuk ejen kami.</p>
-                <p><b>2. 🌐 Website Rasmi:</b> Pastikan anda hanya melayari pautan rasmi kami di <a href="https://www.adawang.asia/" target="_blank">www.adawang.asia</a> untuk mengelakkan taktik phishing.</p>
-                <p><b>3. 📱 QR Code DuitNow:</b> Hanya buat pembayaran menggunakan QR Code DuitNow rasmi yang dipaparkan di dalam portal ini sahaja.</p>
-                <p><b>4. 📞 Panggilan Palsu:</b> Berhati-hati dengan panggilan pihak ketiga yang menyamar sebagai pihak berkuasa atau syarikat pengumpul hutang.</p>
+                <p><b>1. 🔒 Rahsia Peribadi:</b> Jangan sesekali berkongsi kata laluan atau kod PIN anda dengan sesiapa sahaja termasuk ejen kami.</p>
+                <p><b>2. 🌐 Website Rasmi:</b> Pastikan anda hanya melayari pautan rasmi kami di <a href="https://www.adawang.asia/" target="_blank">www.adawang.asia</a> untuk mengelakkan taktik penipuan.</p>
+                <p><b>3. 📱 QR Code DuitNow:</b> Hanya buat pembayaran menggunakan QR Code DuitNow rasmi yang dipaparkan di dalam website ini sahaja.</p>
+                <p><b>4. 📞 Panggilan Palsu:</b> Berhati-hati dengan panggilan atau whatsapp yang mengaku dari adawang staff pembayaran tidak dibuat di whatsapp atau telegram hanya di website pembayaran atau website permohonan sahaja .</p>
                 <p><b>5. 🚨 Lapor Segera:</b> Jika anda mendapati sebarang transaksi atau aktiviti yang mencurigakan, sila hubungi talian sokongan kami dengan kadar segera.</p>
             </div>
             <button class="btn-popup-close" onclick="closePopup()">Saya Faham & Patuh</button>
@@ -168,7 +168,7 @@
                 </div>
 
                 <div class="payment-details">
-                    <p><b>Penerima:</b> Adawang Enterprise</p>
+                    <p><b>Penerima:</b> Shafiq Shop</p>
                     <p><b>Rujukan:</b> <span id="displayAppId">APP0000000</span></p>
                 </div>
 
@@ -198,10 +198,10 @@
             <div class="form-step" id="step4">
                 <div class="success-screen">
                     <div class="success-icon">🎉</div>
-                    <h2>Hantaran Berjaya!</h2>
+                    <h2>Tahniah Pembayaran Berjaya!</h2>
                     <p>Terima kasih <b><span id="displayCustomerName">Pelanggan</span></b>. Resit dan maklumat pembayaran anda untuk ID <b><span id="displayFinalAppId">APP0000000</span></b> telah berjaya diterima.</p>
-                    <div class="status-badge">Sedang Disemak (Maks: 24 Jam)</div>
-                    <button class="btn btn-next" onclick="resetForm()" style="margin-top: 20px;">Buat Bayaran Baru</button>
+                    <div class="status-badge">Pembayaran Anda Sedang Di Proses (Maks: 24 Jam)</div>
+                    <button class="btn btn-next" onclick="resetForm()" style="margin-top: 20px;">Kembali Ke Halaman Utama</button>
                 </div>
             </div>
 
