@@ -280,25 +280,45 @@ body {
 
         // Fungsi Penukar Bahasa Sepenuhnya
         function changeLanguage(lang) {
-            const elements = document.querySelectorAll('[data-lang-ms]');
-            elements.forEach(el => {
-                if (lang === 'en' && el.getAttribute('data-lang-en')) {
-                    el.innerHTML = el.getAttribute('data-lang-en');
-                } else if (lang === 'zh' && el.getAttribute('data-lang-zh')) {
-                    el.innerHTML = el.getAttribute('data-lang-zh');
-                } else {
-                    el.innerHTML = el.getAttribute('data-lang-ms');
-                }
-            });
-            
-            // Tukar placeholder input nama mengikut bahasa
-            const fullnameInput = document.getElementById('fullname');
-            if(fullnameInput) {
-                if(lang === 'en') fullnameInput.placeholder = "Enter your full name";
-                else if(lang === 'zh') fullnameInput.placeholder = "请输入您的全名";
-                else fullnameInput.placeholder = "Masukkan nama penuh anda";
-            }
+
+    const elements = document.querySelectorAll('[data-lang-ms]');
+
+    elements.forEach(el => {
+
+        if(lang === 'en') {
+            el.innerHTML = el.dataset.langEn;
         }
+        else if(lang === 'zh') {
+            el.innerHTML = el.dataset.langZh;
+        }
+        else {
+            el.innerHTML = el.dataset.langMs;
+        }
+    });
+
+    const placeholders = {
+        ms: {
+            fullname: "Masukkan nama penuh anda",
+            icnumber: "Cth: 950102035432",
+            appid: "Cth: APP0000001"
+        },
+        en: {
+            fullname: "Enter your full name",
+            icnumber: "Example: 950102035432",
+            appid: "Example: APP0000001"
+        },
+        zh: {
+            fullname: "请输入您的全名",
+            icnumber: "例如: 950102035432",
+            appid: "例如: APP0000001"
+        }
+    };
+
+    document.getElementById('fullname').placeholder = placeholders[lang].fullname;
+    document.getElementById('icnumber').placeholder = placeholders[lang].icnumber;
+    document.getElementById('appid').placeholder = placeholders[lang].appid;
+}
+                    
     </script>
 
     <script type="text/javascript">
