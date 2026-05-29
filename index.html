@@ -103,11 +103,53 @@ body {
     overflow-x: hidden;
 }
 
-.container {
+..container {
     width: 100%;
-    max-width: 500px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    box-sizing: border-box;
+}
+/* FIX MOBILE FULL WIDTH */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
 }
 
+.form-wrapper {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: nowrap;
+}
+
+.progress-item {
+    font-size: 11px;
+    text-align: center;
+}
+
+.p-txt {
+    font-size: 10px;
+}
+
+.lang-selector-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.lang-select {
+    width: 200px;
+    max-width: 90%;
+}
 </style>
     </style>
 </head>
