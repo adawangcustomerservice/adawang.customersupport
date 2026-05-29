@@ -4,363 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Pembayaran Adawang</title>
-    <style>
-        /* Gaya Tambahan untuk Fungsi Baharu */
-        .lang-selector-container {
-            display: flex;
-            justify-content: flex-end;
-            padding: 10px 20px;
-            background-color: #f7fafc;
-        }
-        .lang-select {
-            padding: 6px 12px;
-            border-radius: 4px;
-            border: 1px solid #cbd5e0;
-            font-size: 0.9em;
-            cursor: pointer;
-            background-color: #ffffff;
-        }
-        .popup-close-x {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #e53e3e;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-        }
-        .popup-close-x:hover {
-            background: #c53030;
-        }
-        .scammer-alert-box {
-            background-color: #fff5f5;
-            border-left: 4px solid #e53e3e;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            text-align: left;
-        }
-        .scammer-alert-box h4 {
-            color: #c53030;
-            margin-top: 0;
-            margin-bottom: 5px;
-        }
-        .calculator-wrapper {
-            background: #f7fafc;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-            margin-top: 10px;
-        }
-        .slider-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .range-slider {
-            width: 100%;
-            height: 8px;
-            border-radius: 5px;
-            background: #cbd5e0;
-            outline: none;
-            -webkit-appearance: none;
-        }
-        .range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #3182ce;
-            cursor: pointer;
-        }
-        .slider-limits {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85em;
-            color: #718096;
-        }
-        .amount-display-box {
-    color: #2b6cb0;
-}
-
-/* PASTE CODE SAYA DI SINI */
-
-body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-.container {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 15px;
-    box-sizing: border-box;
-}
-/* FIX MOBILE FULL WIDTH */
-html, body {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-.form-wrapper {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.progress-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5px;
-    flex-wrap: nowrap;
-}
-
-.progress-item {
-    font-size: 11px;
-    text-align: center;
-}
-
-.p-txt {
-    font-size: 10px;
-}
-
-.lang-selector-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.lang-select {
-    width: 200px;
-    max-width: 90%;
-}
-</style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="lang-selector-container">
-        <select id="langSelect" class="lang-select" onchange="changeLanguage(this.value)">
-            <option value="ms">Bahasa Melayu</option>
-            <option value="en">English</option>
-            <option value="zh">中文</option>
-        </select>
-    </div>
-
     <div class="popup-overlay" id="fraudPopup">
-        <div class="popup-box" style="position: relative; max-width: 550px;">
-            <button class="popup-close-x" onclick="closePopup()">×</button>
-            
+        <div class="popup-box">
             <div class="popup-icon">🚨</div>
-            <h2 data-lang-ms="AMARAN KESELAMATAN: TAKTIK SCAMMER" data-lang-en="SECURITY WARNING: SCAMMER TACTICS" data-lang-zh="安全警报：诈骗手法">AMARAN KESELAMATAN: TAKTIK SCAMMER</h2>
-            
-            <div class="popup-content" style="text-align: left; max-height: 400px; overflow-y: auto;">
-                <div class="scammer-alert-box">
-                    <h4 data-lang-ms="🌐 LAMAN WEB RASMI" data-lang-en="🌐 OFFICIAL WEBSITE" data-lang-zh="🌐 官方网站">🌐 LAMAN WEB RASMI</h4>
-                    <p data-lang-ms="Kami hanya ada satu (1) laman web rasmi:" data-lang-en="We only have one (1) official website:" data-lang-zh="我们仅有一个 (1) 官方网站：">Kami hanya ada <b>satu (1)</b> laman web rasmi:</p>
-                    <p align="center"><a href="https://www.adawang.asia/" target="_blank"><b>www.adawang.asia</b></a></p>
-                    <p style="color: #e53e3e; font-weight: bold;" data-lang-ms="ALERT !! JANGAN TEKAN WEBSITE LINK SCAMMER !" data-lang-en="ALERT !! DO NOT CLICK THE SCAMMER'S WEBSITE LINK!" data-lang-zh="警告！！切勿点击诈骗 website 链接！">ALERT !! JANGAN TEKAN WEBSITE LINK SCAMMER !</p>
-                    <p align="center" style="font-size: 0.9em; word-break: break-all;"><code style="color: #c53030;">https://adawangAsiaEnterprise/</code></p>
-                </div>
-
-                <div class="scammer-alert-box" style="border-left-color: #3182ce; background-color: #ebf8ff;">
-                    <h4 style="color: #2b6cb0;" data-lang-ms="✅ CARA PEMBAYARAN YANG SAH" data-lang-en="✅ VALID PAYMENT METHOD" data-lang-zh="✅ 合法 calendar 支付方式">✅ CARA PEMBAYARAN YANG SAH</h4>
-                    <p data-lang-ms="Login akaun anda sendiri di laman web rasmi untuk mendapatkan QR Kod Pembayaran. Tiada bayaran melalui email, Facebook, WhatsApp atau pihak ketiga. Selain dari ini adalah PENIPUAN." data-lang-en="Log in to your own account on the official website to obtain the Payment QR Code. No payments via email, Facebook, WhatsApp, or third parties. Anything other than this is a FRAUD." data-lang-zh="登录您在官方网站上的个人账户以获取付款二维码。切勿通过电子邮件、Facebook、WhatsApp 或第三方进行付款。除此之外，一概均为诈骗。">Login akaun anda sendiri di laman web rasmi untuk mendapatkan <b>QR Kod Pembayaran</b>. Tiada bayaran melalui email, Facebook, WhatsApp atau pihak ketiga. Selain dari ini adalah <b>PENIPUAN</b>.</p>
-                </div>
-
-                <div class="scammer-alert-box">
-                    <h4 data-lang-ms="❌ TAKTIK SCAMMER" data-lang-en="❌ SCAMMER TACTICS" data-lang-zh="❌ 诈骗手段">❌ TAKTIK SCAMMER</h4>
-                    <p data-lang-ms="Scammer akan menghantar screenshot QR Kod palsu melalui WhatsApp. Sila abaikan dan jangan klik pautan yang dihantar oleh pihak luar. Sentiasa login akaun sendiri dan bayar melalui laman web rasmi sahaja." data-lang-en="Scammers will send screenshots of fake QR Codes via WhatsApp. Please ignore and do not click any links sent by external parties. Always log in to your own account and pay through the official website only." data-lang-zh="诈骗分子会通过 WhatsApp 发送虚假二维码的截图。请对此置之不理，切勿点击外部人员发送的任何链接。请务必登录自己的账户并仅通过官方网站进行付款。">Scammer akan menghantar <b>screenshot QR Kod palsu</b> melalui WhatsApp. Sila <b>abaikan</b> dan jangan klik pautan yang dihantar oleh pihak luar. Sentiasa login akaun sendiri dan bayar melalui laman web rasmi sahaja.</p>
-                </div>
-
-                <div class="scammer-alert-box" style="border-left-color: #4a5568; background-color: #edf2f7;">
-                    <h4 style="color: #2d3748;" data-lang-ms="⚠️ AKAUN BANK SCAMMER YANG DIKENALPASTI" data-lang-en="⚠️ IDENTIFIED SCAMMER BANK ACCOUNTS" data-lang-zh="⚠️ 已确认的诈骗分子银行账户">⚠️ AKAUN BANK SCAMMER YANG DIKENALPASTI</h4>
-                    <ul>
-                        <li><b>MAYBANK</b> - GYT AURORA FASHION RESOURCES</li>
-                        <li><b>RHB</b> - RAJAN LORRY AUTO PARTS</li>
-                        <li><b>RYT</b> - SNIP & SNIP SDN BHD</li>
-                    </ul>
-                    <p style="color: #e53e3e; font-weight: bold; margin-bottom: 0;" data-lang-ms="Jangan sekali-kali memindahkan wang ke akaun ini." data-lang-en="Never transfer money to these accounts." data-lang-zh="切勿向这些账户转账。">Jangan sekali-kali memindahkan wang ke akaun ini.</p>
-                </div>
+            <h2>AMARAN KESELAMATAN KEPADA PELANGGAN</h2>
+            <div class="popup-content">
+                <p><b>1. 🔒 Rahsia Peribadi:</b> Jangan sesekali berkongsi kata laluan atau kod TAC anda dengan sesiapa sahaja termasuk ejen kami.</p>
+                <p><b>2. 🌐 Website Rasmi:</b> Pastikan anda hanya melayari pautan rasmi kami di <a href="https://www.adawang.asia/" target="_blank">www.adawang.asia</a> untuk mengelakkan taktik phishing.</p>
+                <p><b>3. 📱 QR Code DuitNow:</b> Hanya buat pembayaran menggunakan QR Code DuitNow rasmi yang dipaparkan di dalam portal ini sahaja.</p>
+                <p><b>4. 📞 Panggilan Palsu:</b> Berhati-hati dengan panggilan pihak ketiga yang menyamar sebagai pihak berkuasa atau syarikat pengumpul hutang.</p>
+                <p><b>5. 🚨 Lapor Segera:</b> Jika anda mendapati sebarang transaksi atau aktiviti yang mencurigakan, sila hubungi talian sokongan kami dengan kadar segera.</p>
             </div>
-            <button class="btn-popup-close" onclick="closePopup()" style="background-color: #3182ce;" data-lang-ms="SAYA FAHAM" data-lang-en="I UNDERSTAND" data-lang-zh="我明白了">SAYA FAHAM</button>
+            <button class="btn-popup-close" onclick="closePopup()">Saya Faham & Patuh</button>
         </div>
     </div>
 
     <div class="container">
         <div class="header">
             <div class="logo-placeholder"><img src="IMG_6239.jpeg" alt="Logo Syarikat" width="150"></div>
-            <p class="subtitle" data-lang-ms="Portal Rasmi Pembayaran Balik Pinjaman ADAWANG" data-lang-en="ADAWANG Official Loan Repayment Portal" data-lang-zh="ADAWANG 官方贷款还款业务门户网站">Portal Rasmi Pembayaran Balik Pinjaman ADAWANG</p>
+            <p class="subtitle">Portal Rasmi Pembayaran Balik Pinjaman</p>
         </div>
 
         <div class="form-wrapper">
             
             <div class="progress-container">
                 <div class="progress-line"><div class="progress-line-fill" id="progressLine"></div></div>
-                <div class="progress-item active" id="p1"><div class="p-num">1</div><div class="p-txt" data-lang-ms="Maklumat" data-lang-en="Information" data-lang-zh="信息">Maklumat</div></div>
-                <div class="progress-item" id="p2"><div class="p-num">2</div><div class="p-txt" data-lang-ms="Bayaran QR" data-lang-en="QR Payment" data-lang-zh="二维码支付">Bayaran QR</div></div>
-                <div class="progress-item" id="p3"><div class="p-num">3</div><div class="p-txt" data-lang-ms="Upload Resit" data-lang-en="Upload Receipt" data-lang-zh="上传收据">Upload Resit</div></div>
-                <div class="progress-item" id="p4"><div class="p-num">✓</div><div class="p-txt" data-lang-ms="Selesai" data-lang-en="Completed" data-lang-zh="完成">Selesai</div></div>
+                <div class="progress-item active" id="p1"><div class="p-num">1</div><div class="p-txt">Maklumat</div></div>
+                <div class="progress-item" id="p2"><div class="p-num">2</div><div class="p-txt">Bayaran QR</div></div>
+                <div class="progress-item" id="p3"><div class="p-num">3</div><div class="p-txt">Upload Resit</div></div>
+                <div class="progress-item" id="p4"><div class="p-num">✓</div><div class="p-txt">Selesai</div></div>
             </div>
 
             <div class="form-step active" id="step1">
-                <h3 data-lang-ms="📋 Langkah 1: Maklumat Pelanggan" data-lang-en="📋 Step 1: Customer Information" data-lang-zh="📋 步骤 1：客户信息">📋 Langkah 1: Maklumat Pelanggan</h3>
+                <h3>📋 Langkah 1: Maklumat Pelanggan</h3>
                 <div class="form-group">
-                    <label data-lang-ms="Nama Penuh (Seperti dalam IC) *" data-lang-en="Full Name (As in IC) *" data-lang-zh="全名（与身份证相同）*">Nama Penuh (Seperti dalam IC) *</label>
+                    <label>Nama Penuh (Seperti dalam IC) *</label>
                     <input type="text" id="fullname" placeholder="Masukkan nama penuh anda" required>
                 </div>
                 <div class="form-group">
-                    <label data-lang-ms="Nombor Kad Pengenalan (IC) *" data-lang-en="Identity Card Number (IC) *" data-lang-zh="身份证号码 (IC) *">Nombor Kad Pengenalan (IC) *</label>
+                    <label>Nombor Kad Pengenalan (IC) *</label>
                     <input type="text" id="icnumber" placeholder="Cth: 950102035432" maxlength="12" required>
                 </div>
                 <div class="form-group">
-                    <label data-lang-ms="ID Number (App ID) *" data-lang-en="ID Number (App ID) *" data-lang-zh="身份证号/申请编号 (App ID) *">ID Number (App ID) *</label>
+                    <label>ID Aplikasi (App ID) *</label>
                     <input type="text" id="appid" placeholder="Cth: APP0000001" required>
                 </div>
-                
                 <div class="form-group">
-                    <label data-lang-ms="Jumlah Bayaran Balik (RM) *" data-lang-en="Repayment Amount (RM) *" data-lang-zh="还款金额 (RM) *">Jumlah Bayaran Balik (RM) *</label>
-                    <div class="calculator-wrapper">
-                        <div class="amount-display-box">RM <span id="amountDisplay">300</span></div>
-                        <div class="slider-container">
-                            <input type="range" id="amountSlider" class="range-slider" min="300" max="5000" step="50" value="300" oninput="updateCalculatorAmount(this.value)">
-                            <div class="slider-limits">
-                                <span>RM 300</span>
-                                <span data-lang-ms="Sila slide jumlah" data-lang-en="Please slide amount" data-lang-zh="请滑动选择金额" style="font-size: 0.8em; color: #a0aec0;">Sila slide jumlah</span>
-                                <span>RM 5,000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="hidden" id="amount" value="300">
+                    <label>Jumlah Bayaran Balik (RM) *</label>
+                    <input type="number" id="amount" placeholder="0.00" step="0.01" required>
                 </div>
-
-                <button class="btn btn-next" onclick="goToStep2()" data-lang-ms="Seterusnya (Bayaran) →" data-lang-en="Next (Payment) →" data-lang-zh="下一步（付款）→">Seterusnya (Bayaran) →</button>
+                <button class="btn btn-next" onclick="goToStep2()">Seterusnya (Bayaran) →</button>
             </div>
 
             <div class="form-step" id="step2">
-                <h3 data-lang-ms="💵 Langkah 2: Imbas QR DuitNow" data-lang-en="💵 Step 2: Scan DuitNow QR" data-lang-zh="💵 步骤 2：扫描 DuitNow 二维码">💵 Langkah 2: Imbas QR DuitNow</h3>
-                <p class="step-info"><span data-lang-ms="Sila imbas QR Code yang diberi di bawah menggunakan aplikasi Bank atau e-Wallet anda untuk jumlah" data-lang-en="Please scan the QR Code provided below using your Bank or e-Wallet app for the amount of" data-lang-zh="请使用您的银行或电子钱包应用程序扫描下方提供的二维码，金额为">Sila imbas QR Code yang diberi di bawah menggunakan aplikasi Bank atau e-Wallet anda untuk jumlah</span> <b>RM <span id="displayAmount">0.00</span></b>.</p>
+                <h3>💵 Langkah 2: Imbas QR DuitNow</h3>
+                <p class="step-info">Sila imbas QR Code di bawah menggunakan aplikasi Bank atau e-Wallet anda untuk jumlah <b>RM <span id="displayAmount">0.00</span></b>.</p>
                 
                 <div class="qr-container">
                     <img src="37185387-837C-43AE-B646-C0F0A036F39D.jpeg" alt="DuitNow QR Code Adawang" class="qr-image" onerror="this.src='https://placehold.co/250x250?text=Sila+Upload+QR+DuitNow'">
                 </div>
 
                 <div class="payment-details">
-                    <p><b data-lang-ms="Penerima:" data-lang-en="Recipient:" data-lang-zh="收款人：">Penerima:</b> Shafiq Shop</p>
-                    <p><b data-lang-ms="Rujukan:" data-lang-en="Reference:" data-lang-zh="参考号：">Rujukan:</b> <span id="displayAppId">APP0000000</span></p>
+                    <p><b>Penerima:</b> Adawang Enterprise</p>
+                    <p><b>Rujukan:</b> <span id="displayAppId">APP0000000</span></p>
                 </div>
 
                 <div class="btn-group">
-                    <button class="btn btn-back" onclick="prevStep(1)" data-lang-ms="← Kembali" data-lang-en="← Back" data-lang-zh="← 返回">← Kembali</button>
-                    <button class="btn btn-next" onclick="nextStep(3)" data-lang-ms="Pembayaran Telah Dibuat →" data-lang-en="Payment Made →" data-lang-zh="付款已完成 →">Pembayaran Telah Dibuat →</button>
+                    <button class="btn btn-back" onclick="prevStep(1)">← Kembali</button>
+                    <button class="btn btn-next" onclick="nextStep(3)">Saya Dah Bayar →</button>
                 </div>
             </div>
 
             <div class="form-step" id="step3">
-                <h3 data-lang-ms="📎 Langkah 3: Muat Naik Resit Bayaran" data-lang-en="📎 Step 3: Upload Payment Receipt" data-lang-zh="📎 步骤 3：上传付款收据">📎 Langkah 3: Muat Naik Resit Bayaran</h3>
-                <p class="step-info" data-lang-ms="Sila muat naik bukti pembayaran (PDF atau Gambar) bagi pengesahan akaun anda." data-lang-en="Please upload proof of payment (PDF or Image) for account verification." data-lang-zh="请上传付款凭证（PDF 或图片）以进行账户验证。">Sila muat naik bukti pembayaran (PDF atau Gambar) bagi pengesahan akaun anda.</p>
+                <h3>📎 Langkah 3: Muat Naik Resit</h3>
+                <p class="step-info">Sila muat naik bukti pembayaran (PDF atau Gambar) bagi pengesahan akaun anda.</p>
                 
                 <div class="upload-box" onclick="document.getElementById('receiptFile').click()">
                     <div class="upload-icon">📤</div>
-                    <p id="uploadStatus" data-lang-ms="Klik di sini untuk pilih file" data-lang-en="Click here to select a file" data-lang-zh="点击此处选择文件">Klik di sini untuk pilih file</p>
+                    <p id="uploadStatus">Klik di sini untuk pilih resit</p>
                     <span style="font-size: 0.8em; color: #a0aec0;">Format: PNG, JPG, JPEG, PDF (Maks: 5MB)</span>
                     <input type="file" id="receiptFile" accept=".png,.jpg,.jpeg,.pdf" style="display:none;" onchange="fileSelected()">
                 </div>
 
                 <div class="btn-group">
-                    <button class="btn btn-back" onclick="prevStep(2)" data-lang-ms="← Kembali" data-lang-en="← Back" data-lang-zh="← 返回">← Kembali</button>
-                    <button class="btn btn-success" onclick="submitReceipt()" data-lang-ms="Hantar Pengesahan ✓" data-lang-en="Submit Verification ✓" data-lang-zh="提交验证 ✓">Hantar Pengesahan ✓</button>
+                    <button class="btn btn-back" onclick="prevStep(2)">← Kembali</button>
+                    <button class="btn btn-success" onclick="submitReceipt()">Hantar Pengesahan ✓</button>
                 </div>
             </div>
 
             <div class="form-step" id="step4">
                 <div class="success-screen">
                     <div class="success-icon">🎉</div>
-                    <h2 data-lang-ms="Pengesahan Telah Berjaya!" data-lang-en="Verification Successful!" data-lang-zh="验证成功！">Pengesahan Telah Berjaya!</h2>
-                    <p><span data-lang-ms="Terima kasih" data-lang-en="Thank you" data-lang-zh="谢谢您">Terima kasih</span> <b><span id="displayCustomerName">Pelanggan</span></b>. <span data-lang-ms="Resit dan maklumat pembayaran anda untuk ID" data-lang-en="Your receipt and payment details for ID" data-lang-zh="您提交对应账户 ID 的收据和付款信息">Resit dan maklumat pembayaran anda untuk ID</span> <b><span id="displayFinalAppId">APP0000000</span></b> <span data-lang-ms="telah berjaya diterima." data-lang-en="has been successfully received." data-lang-zh="已成功收到。">telah berjaya diterima.</span></p>
-                    <div class="status-badge" data-lang-ms="Sedang Di Proses (Maks: 24 Jam)" data-lang-en="In Progress (Max: 24 Hours)" data-lang-zh="正在处理中（最多 24 小时）">Sedang Di Proses (Maks: 24 Jam)</div>
-                    <button class="btn btn-next" onclick="resetForm()" style="margin-top: 20px;" data-lang-ms="Kembali ke halaman baharu" data-lang-en="Back to main page" data-lang-zh="返回新页面">Kembali ke halaman baharu</button>
+                    <h2>Hantaran Berjaya!</h2>
+                    <p>Terima kasih <b><span id="displayCustomerName">Pelanggan</span></b>. Resit dan maklumat pembayaran anda untuk ID <b><span id="displayFinalAppId">APP0000000</span></b> telah berjaya diterima.</p>
+                    <div class="status-badge">Sedang Disemak (Maks: 24 Jam)</div>
+                    <button class="btn btn-next" onclick="resetForm()" style="margin-top: 20px;">Buat Bayaran Baru</button>
                 </div>
             </div>
 
         </div>
 
         <div class="social-channels">
-            <h4 data-lang-ms="Hubungi Saluran Rasmi Kami:" data-lang-en="Contact Our Official Channels:" data-lang-zh="联系我们的官方渠道：">Hubungi Saluran Rasmi Kami:</h4>
+            <h4>Hubungi Saluran Rasmi Kami:</h4>
             <div class="links-grid">
-                <a href="https://wa.me/60123456789" target="_blank" class="chan-link whatsapp" data-lang-ms="💬 WhatsApp Sokongan" data-lang-en="💬 WhatsApp Support" data-lang-zh="💬 WhatsApp 技术支持">💬 WhatsApp Sokongan</a>
-                <a href="https://t.me/adawang_support" target="_blank" class="chan-link telegram" data-lang-ms="✈️ Telegram Rasmi" data-lang-en="✈️ Official Telegram" data-lang-zh="✈️ 官方 Telegram">✈️ Telegram Rasmi</a>
-                <a href="https://www.adawang.asia/" target="_blank" class="chan-link website" data-lang-ms="🌐 Laman Web Utama" data-lang-en="🌐 Main Website" data-lang-zh="🌐 主站/官方网站">🌐 Laman Web Utama</a>
+                <a href="https://wa.me/60123456789" target="_blank" class="chan-link whatsapp">💬 WhatsApp Sokongan</a>
+                <a href="https://t.me/adawang_support" target="_blank" class="chan-link telegram">✈️ Telegram Rasmi</a>
+                <a href="https://www.adawang.asia/" target="_blank" class="chan-link website">🌐 Laman Web Utama</a>
             </div>
         </div>
     </div>
 
+    <!-- Fail JavaScript asal untuk fungsi borang/popup portal -->
     <script src="script.js"></script>
 
-    <script type="text/javascript">
-        // Fungsi Kemaskini Paparan Slider Nilai Kalkulator
-        function updateCalculatorAmount(val) {
-            document.getElementById('amountDisplay').innerText = parseFloat(val).toFixed(2);
-            document.getElementById('amount').value = val; // Set nilai pada hidden input asal supaya logic script.js tidak lari
-        }
-
-        // Fungsi Penukar Bahasa Sepenuhnya
-        function changeLanguage(lang) {
-
-    const elements = document.querySelectorAll('[data-lang-ms]');
-
-    elements.forEach(el => {
-
-        if(lang === 'en') {
-            el.innerHTML = el.dataset.langEn;
-        }
-        else if(lang === 'zh') {
-            el.innerHTML = el.dataset.langZh;
-        }
-        else {
-            el.innerHTML = el.dataset.langMs;
-        }
-    });
-
-    const placeholders = {
-        ms: {
-            fullname: "Masukkan nama penuh anda",
-            icnumber: "Cth: 950102035432",
-            appid: "Cth: APP0000001"
-        },
-        en: {
-            fullname: "Enter your full name",
-            icnumber: "Example: 950102035432",
-            appid: "Example: APP0000001"
-        },
-        zh: {
-            fullname: "请输入您的全名",
-            icnumber: "例如: 950102035432",
-            appid: "例如: APP0000001"
-        }
-    };
-
-    document.getElementById('fullname').placeholder = placeholders[lang].fullname;
-    document.getElementById('icnumber').placeholder = placeholders[lang].icnumber;
-    document.getElementById('appid').placeholder = placeholders[lang].appid;
-}
-                    
-    </script>
-
+    <!-- Integrasi Live Chat Crisp (ID: b2ba94c5-4673-479a-a2a7-7b6c8ed5357a) -->
     <script type="text/javascript">
         window.$crisp=[];window.CRISP_WEBSITE_ID="b2ba94c5-4673-479a-a2a7-7b6c8ed5357a";
         (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
